@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import classes from './page.module.css';
+import MealsGrid from '@/components/meals/meals-grid';
+import { GetMeals } from '@/lib/meals';
 
-export default function MealsPage() {
+// async - add before function! This option add in server component
+
+export default async function MealsPage() {
+    const meals = await GetMeals();
     return (
         <>
             <header className={classes.header}>
@@ -17,7 +22,9 @@ export default function MealsPage() {
                     <Link href="/meals/share">Share Your Favorite Recipe</Link>
                 </p>
             </header>
-            <main className={classes.main}></main>
+            <main className={classes.main}>
+                <MealsGrid meals={meals} />
+            </main>
         </>
     );
 }
