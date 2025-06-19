@@ -2,11 +2,19 @@ import Link from 'next/link';
 import classes from './page.module.css';
 import MealsGrid from '@/components/meals/meals-grid';
 import { GetMeals } from '@/lib/meals';
+import { Suspense } from 'react';
+import MealsLoadingPage from './loading-out';
 
 // async - add before function! This option add in server component
+// Suspense - loading content
 
-export default async function MealsPage() {
+async function Meals() {
     const meals = await GetMeals();
+
+    return await (<MealsGrid meals={meals} />);
+}
+
+export default function MealsPage() {
     return (
         <>
             <header className={classes.header}>
@@ -23,7 +31,9 @@ export default async function MealsPage() {
                 </p>
             </header>
             <main className={classes.main}>
-                <MealsGrid meals={meals} />
+                <Suspense fallback={<MealsLoadingPage />}>
+                    <Meals />
+                </Suspense>
             </main>
         </>
     );
