@@ -4,7 +4,7 @@ import classes from './image-picker.module.css';
 import Image from 'next/image';
 
 export default function ImagePicker({ label, name }) {
-    const [pickedImage, setPickedImage] = useState(null);
+    const [pickedImage, setPickedImage] = useState();
     const inputRef = useRef(null);
 
     function handlePickClick(e) {
@@ -29,7 +29,7 @@ export default function ImagePicker({ label, name }) {
             <label htmlFor={name}>{label}</label>
             <div className={classes.controls}>
                 <div className={classes.preview}>
-                    {!pickedImage && <p>Mo image picked yet.</p>}
+                    {!pickedImage && <p>No image picked yet.</p>}
                     {pickedImage && (
                         <Image
                             src={pickedImage}
@@ -46,6 +46,7 @@ export default function ImagePicker({ label, name }) {
                     name={name}
                     ref={inputRef}
                     onChange={handleImageChange}
+                    required
                 />
                 <button
                     className={classes.button}
