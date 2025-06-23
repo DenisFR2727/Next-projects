@@ -1,7 +1,9 @@
 'use server';
-
+//  revalidatePath - видкидає кеш , який повязаний з цими сторінками (агресивне кешування в next.js)
+// (Наприклад коли ми додаємо нову страву , то вона не відображається до перезавантаження сторінки. А тільк після перезавантаження. Що б цього уникнути - використовуємо  revalidatePath)
 import { redirect } from 'next/navigation';
 import { saveMeal } from './meals';
+import { revalidatePath } from 'next/cache';
 
 function isInvalidText(text) {
     return !text || text.trim() === '';
@@ -33,5 +35,6 @@ export async function shareMeal(prevState, formData) {
         // throw new Error('Invalid Input');
     }
     await saveMeal(meal);
+    revalidatePath('/meals');
     redirect('/meals');
 }

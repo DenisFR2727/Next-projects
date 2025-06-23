@@ -4,8 +4,24 @@ import { notFound } from 'next/navigation';
 
 import classes from './page.module.css';
 
-export default function MealDatailsPage({ params }) {
-    const meal = getMeal(params.mealSlug);
+//  Meta - для динамічних сторінок [mealSlug] (meta генеруються першими)
+export async function generateMetadata({ params }) {
+    const { mealSlug } = await params;
+
+    const meal = await getMeal(mealSlug);
+
+    if (!meal) {
+        notFound();
+    }
+    return {
+        title: meal.title,
+        decription: meal.summary,
+    };
+}
+export default async function MealDatailsPage({ params }) {
+    const { mealSlug } = await params;
+
+    const meal = await getMeal(mealSlug);
 
     if (!meal) {
         notFound();

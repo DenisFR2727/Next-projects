@@ -11,7 +11,7 @@ import { useActionState } from 'react';
 
 export default function ShareMealPage() {
     const [state, formAction, isPending] = useActionState(shareMeal, {
-        massege: null,
+        message: null,
     });
     // const [state, formAction] = useFormState(shareMeal, { massege: null });
 

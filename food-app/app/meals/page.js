@@ -8,10 +8,15 @@ import MealsLoadingPage from './loading-out';
 // async - add before function! This option add in server component
 // Suspense - loading content
 
+export const metadata = {
+    title: 'All Meals',
+    description: 'Browse the delicious meals shared by our vibrant community.',
+};
+
 async function Meals() {
     const meals = await GetMeals();
 
-    return await (<MealsGrid meals={meals} />);
+    return <MealsGrid meals={meals} />;
 }
 
 export default function MealsPage() {
