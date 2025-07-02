@@ -12,9 +12,11 @@ export default function NewsPage() {
                 {DUMMY_NEWS.map((newsItem) => (
                     <li key={newsItem.id}>
                         <Link href={`/news/${newsItem.slug}`}>
-                            <img
+                            <Image
                                 src={`/images/news/${newsItem.image}`}
                                 alt={newsItem.title}
+                                width={300}
+                                height={300}
                             />
                         </Link>
                         <span>{newsItem.title} </span>
