@@ -1,8 +1,15 @@
 import { DUMMY_NEWS } from '@/dummy-new';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 export default function NewsDatailsPage({ params }) {
     const newsSlug = params.slug;
     const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsSlug);
+
+    if (!newsItem) {
+        notFound();
+    }
+
     return (
         <article className="news-article">
             <header>

@@ -1,28 +1,13 @@
-import Link from 'next/link';
 import { DUMMY_NEWS } from '@/dummy-new';
-import Image from 'next/image';
 
 import '../globals.css';
+import NewsList from '@/components/news-list';
 
 export default function NewsPage() {
     return (
         <>
             <h1>News:</h1>
-            <ul className="news-list">
-                {DUMMY_NEWS.map((newsItem) => (
-                    <li key={newsItem.id}>
-                        <Link href={`/news/${newsItem.slug}`}>
-                            <Image
-                                src={`/images/news/${newsItem.image}`}
-                                alt={newsItem.title}
-                                width={300}
-                                height={300}
-                            />
-                        </Link>
-                        <span>{newsItem.title} </span>
-                    </li>
-                ))}
-            </ul>
+            <NewsList news={DUMMY_NEWS} />
         </>
     );
 }

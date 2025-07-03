@@ -1,3 +1,10 @@
+import './globals.css';
+
 export default function NotFound() {
-    return <div>Not-found this Page</div>;
+    return (
+        <div id="error">
+            <h1>Not-found this Page</h1>
+            <p>The requested resource could not found!</p>
+        </div>
+    );
 }
