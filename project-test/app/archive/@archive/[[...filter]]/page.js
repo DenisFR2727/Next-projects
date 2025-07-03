@@ -33,7 +33,6 @@ export default function FilteredNewsPage({ params }) {
         newsContent = <NewsList news={news} />;
     }
 
-    // console.log(filter);
     return (
         <>
             <header id="archive-header">
