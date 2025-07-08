@@ -1,7 +1,5 @@
 import { DUMMY_NEWS } from '@/dummy-new';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import ImagePage from './image/page';
 import Link from 'next/link';
 
 export default function NewsDatailsPage({ params }) {

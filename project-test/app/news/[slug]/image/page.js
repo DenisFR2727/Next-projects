@@ -1,5 +1,4 @@
 import { DUMMY_NEWS } from '@/dummy-new';
-import Image from 'next/image';
 
 export default function ImagePage({ params }) {
     const newsItemSlug = params.slug;
