@@ -1,14 +1,12 @@
-'use client';
 import { DUMMY_NEWS } from '@/dummy-new';
-import { useRouter } from 'next/navigation';
+import RouterBackPath from './router-back';
 
 import '../../../../globals.css';
 
 // (.)image - перехоплювач маршрутів (повинно співпадати з назвою що ми хочемо перехопити )
 //  router.back повертаємо шлях назад
-export default function InterceptedImagePage({ params }) {
-    const router = useRouter();
 
+export default function InterceptedImagePage({ params }) {
     const newsItemSlug = params.slug;
     const newsItem = DUMMY_NEWS.find(
         (newsItem) => newsItem.slug === newsItemSlug
@@ -21,7 +19,7 @@ export default function InterceptedImagePage({ params }) {
         <>
             <div
                 className="modal-backdrop"
-                onClick={() => router.back(`/news/${newsItem.slug}`)}
+                onClick={<RouterBackPath href={`/news/${newsItem.slug}`} />}
             >
                 <dialog className="modal" open>
                     <div className="fullscreen-image">
