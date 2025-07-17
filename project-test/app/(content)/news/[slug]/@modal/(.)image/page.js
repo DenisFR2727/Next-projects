@@ -2,7 +2,7 @@
 import { DUMMY_NEWS } from '@/dummy-new';
 import { notFound, useRouter } from 'next/navigation';
 
-import '../../../../globals.css';
+import '@/styles/globals.css';
 
 // (.)image - перехоплювач маршрутів (повинно співпадати з назвою що ми хочемо перехопити )
 //  router.back повертаємо шлях назад

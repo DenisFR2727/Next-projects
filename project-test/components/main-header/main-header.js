@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import NavLink from './nav-link';
 
-import './main-header.module.css';
+import '@styles/globals.css';
+// import './main-header.module.css';
 
 export default function MainHeader() {
     return (

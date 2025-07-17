@@ -1,7 +1,6 @@
 import { DUMMY_NEWS } from '@/dummy-new';
-
-import '../globals.css';
 import NewsList from '@/components/news-list';
+import '@/styles/globals.css';
 
 export default function NewsPage() {
     return (

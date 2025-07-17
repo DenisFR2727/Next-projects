@@ -1,7 +1,9 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./*"]
+    "compilerOptions": {
+        "baseUrl": ".", // Обов'язково! Базовий шлях — корінь проєкту
+        "paths": {
+            "@styles/*": ["app/styles/*"], // або src/styles/*, якщо використовуєш src
+            "@/*": ["app/*", "./*"]
+        }
     }
-  }
 }

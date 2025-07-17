@@ -1,4 +1,5 @@
 import NewsList from '@/components/news-list';
+import Link from 'next/link';
 import {
     getAvailableNewsMonths,
     getAvailableNewsYears,
@@ -6,8 +7,7 @@ import {
     getNewsForYearAndMonth,
 } from '@/lib/news';
 
-import '../../../globals.css';
-import Link from 'next/link';
+import '@/styles/globals.css';
 // [[...filter]] - універсальне значення сторінка яка буде активною для різних шляхів.
 
 export default function FilteredNewsPage({ params }) {

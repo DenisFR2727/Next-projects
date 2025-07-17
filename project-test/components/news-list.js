@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import '../app/globals.css';
+import '@/styles/globals.css';
 
 export default function NewsList({ news }) {
     return (

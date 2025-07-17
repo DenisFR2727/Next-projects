@@ -1,7 +1,7 @@
-import logo from '@/assets/logo.jpg';
 import Link from 'next/link';
+import logo from '@/assets/logo.jpg';
 
-import './globals.css';
+import '@styles/globals.css';
 
 export default function HomePage() {
     return (
