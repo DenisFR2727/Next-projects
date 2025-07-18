@@ -7,7 +7,7 @@ import { getAllNews } from '@/lib/news';
 import '@/styles/globals.css';
 
 export default async function NewsPage() {
-    const news = getAllNews();
+    const news = await getAllNews();
 
     return (
         <>
