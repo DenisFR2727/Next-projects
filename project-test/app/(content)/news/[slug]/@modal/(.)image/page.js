@@ -1,33 +1,24 @@
-'use client';
-import { DUMMY_NEWS } from '@/dummy-new';
-import { notFound, useRouter } from 'next/navigation';
-
-import '@/styles/globals.css';
-
+import { notFound } from "next/navigation";
+import { getNewsItem } from "@/lib/news";
+import ModalBackDrop from "@/components/modal-backdrop";
 // (.)image - перехоплювач маршрутів (повинно співпадати з назвою що ми хочемо перехопити )
 //  router.back повертаємо шлях назад
+import "@/styles/globals.css";
 
-export default function InterceptedImagePage({ params }) {
-    const router = useRouter();
+export default async function InterceptedImagePage({ params }) {
+  const newsItemSlug = params.slug;
+  const newsItem = await getNewsItem(newsItemSlug);
 
-    const newsItemSlug = params.slug;
-    const newsItem = DUMMY_NEWS.find(
-        (newsItem) => newsItem.slug === newsItemSlug
-    );
-
-    if (!newsItem) {
-        notFound();
-    }
-    return (
-        <div className="modal-backdrop" onClick={router.back}>
-            <dialog className="modal" open>
-                <div className="fullscreen-image">
-                    <img
-                        src={`/images/news/${newsItem.image}`}
-                        alt={newsItem.title}
-                    />
-                </div>
-            </dialog>
+  if (!newsItem) {
+    notFound();
+  }
+  return (
+    <ModalBackDrop>
+      <dialog className="modal" open>
+        <div className="fullscreen-image">
+          <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
         </div>
-    );
+      </dialog>
+    </ModalBackDrop>
+  );
 }

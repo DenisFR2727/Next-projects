@@ -1,10 +1,10 @@
-import '@/styles/globals.css';
+import "@/styles/globals.css";
 
 export default function NewsDetailLayout({ children, modal }) {
-    return (
-        <>
-            {modal}
-            {children}
-        </>
-    );
+  return (
+    <>
+      {modal}
+      {children}
+    </>
+  );
 }

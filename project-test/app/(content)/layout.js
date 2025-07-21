@@ -1,20 +1,20 @@
-import MainHedaer from '@/components/main-header/main-header';
-import '@styles/globals.css';
+import MainHedaer from "@/components/main-header/main-header";
+import "@styles/globals.css";
 
 export const metadata = {
-    title: 'Next.js Page Routing & Rendering',
-    description: 'Learn how to route to different pages.',
+  title: "Next.js Page Routing & Rendering",
+  description: "Learn how to route to different pages.",
 };
 
 export default function RootLayout({ children }) {
-    return (
-        <html lang="en" suppressHydrationWarning={true}>
-            <body>
-                <div id="page">
-                    <MainHedaer />
-                    {children}
-                </div>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" suppressHydrationWarning={true}>
+      <body>
+        <div id="page">
+          <MainHedaer />
+          {children}
+        </div>
+      </body>
+    </html>
+  );
 }
