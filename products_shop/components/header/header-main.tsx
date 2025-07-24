@@ -15,6 +15,7 @@ import Link from "next/link";
 
 import "./header-main.scss";
 import Image from "next/image";
+import NavLink from "./nav-link";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -48,26 +49,40 @@ export default function HeaderMain() {
               className="font-bold text-inherit"
               onClick={() => setIsMenuOpen(false)}
             >
-              <div className="logo-nav">Funny Shop</div>
+              <span className="logo-nav">Funny Shop</span>
             </Link>
           </NavbarBrand>
         </NavbarContent>
         <NavbarContent className="hidden sm:flex gap-4" justify="start">
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
-              <Image src="/favicon.png" alt="" width={30} height={30} />
+              <Image
+                style={{ maxWidth: "30px !important" }}
+                src="/favicon.png"
+                alt=""
+                width={30}
+                height={30}
+              />
             </Link>
           </NavbarBrand>
-          <NavbarItem>
-            <Link href="/products">Products</Link>
+          <NavbarItem className="lg:flex ">
+            <NavLink href="/">Home</NavLink>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/about">About</Link>
+            <NavLink href="/products">Products</NavLink>
+          </NavbarItem>
+          <NavbarItem>
+            <NavLink href="/about">About</NavLink>
+          </NavbarItem>
+          <NavbarItem>
+            <NavLink href="/about">Cart</NavLink>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
-          <NavbarItem className="lg:flex">
-            <Link href="#">Login</Link>
+          <NavbarItem className="lg:flex ">
+            <Link href="#">
+              <span className="header_login-nav">Login</span>
+            </Link>
           </NavbarItem>
           <NavbarItem>
             <Button as={Link} color="primary" href="#" variant="flat">
