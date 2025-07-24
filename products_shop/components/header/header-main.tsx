@@ -24,7 +24,7 @@ export default function HeaderMain() {
     { label: "Login", href: "#" },
     { label: "Sign Up", href: "#" },
   ];
-
+  // use client component
   return (
     <header>
       <Navbar
