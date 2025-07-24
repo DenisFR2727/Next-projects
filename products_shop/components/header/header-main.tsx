@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 
 import "./header-main.scss";
+import Image from "next/image";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -24,7 +25,7 @@ export default function HeaderMain() {
     { label: "Login", href: "#" },
     { label: "Sign Up", href: "#" },
   ];
-  // use client component
+
   return (
     <header>
       <Navbar
@@ -42,15 +43,19 @@ export default function HeaderMain() {
           justify="center"
         >
           <NavbarBrand>
-            <Link href="/" className="font-bold text-inherit">
-              Funny Shop
+            <Link
+              href="/"
+              className="font-bold text-inherit"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <div className="logo-nav">Funny Shop</div>
             </Link>
           </NavbarBrand>
         </NavbarContent>
         <NavbarContent className="hidden sm:flex gap-4" justify="start">
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
-              Funny Shop
+              <Image src="/favicon.png" alt="" width={30} height={30} />
             </Link>
           </NavbarBrand>
           <NavbarItem>
@@ -81,6 +86,7 @@ export default function HeaderMain() {
                 color={item.label === "Sign Up" ? "primary" : "foreground"}
                 size="lg"
                 as={Link}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </HeroLink>
