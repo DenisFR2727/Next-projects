@@ -12,7 +12,8 @@ import {
   NavbarMenuToggle,
 } from "@heroui/react";
 import Link from "next/link";
-
+import Image from "next/image";
+import NavLink from "./nav-link";
 import "./header-main.scss";
 import { useRouter } from "next/navigation";
 
@@ -49,27 +50,49 @@ export default function HeaderMain() {
               className="font-bold text-inherit"
               onClick={() => setIsMenuOpen(false)}
             >
+<<<<<<< HEAD
               Funny Shop
+=======
+              <span className="logo-nav">Funny Shop</span>
+>>>>>>> feature/Nav
             </Link>
           </NavbarBrand>
         </NavbarContent>
         <NavbarContent className="hidden sm:flex gap-4" justify="start">
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
-              Funny Shop
+              <Image
+                style={{ maxWidth: "30px !important" }}
+                src="/favicon.png"
+                alt=""
+                width={30}
+                height={30}
+              />
             </Link>
           </NavbarBrand>
-          <NavbarItem>
-            <Link href="/products">Products</Link>
+          <NavbarItem className="lg:flex ">
+            <NavLink href="/">Home</NavLink>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/about">About</Link>
+            <NavLink href="/products">Products</NavLink>
+          </NavbarItem>
+          <NavbarItem>
+            <NavLink href="/about">About</NavLink>
+          </NavbarItem>
+          <NavbarItem>
+            <NavLink href="/cart">Cart</NavLink>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
+<<<<<<< HEAD
           <NavbarItem className="lg:flex">
             <Link href="#" onClick={() => setIsMenuOpen(false)}>
               Login
+=======
+          <NavbarItem className="lg:flex ">
+            <Link href="#">
+              <span className="header_login-nav">Login</span>
+>>>>>>> feature/Nav
             </Link>
           </NavbarItem>
           <NavbarItem>

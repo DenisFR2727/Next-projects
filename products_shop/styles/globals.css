@@ -12,14 +12,18 @@
   margin-top: 30px;
   padding-left: 1rem;
   background: black;
-  background: grey;
+
+  background: #ecedee;
   height: fit-content;
-  border-radius: 20px;
+  border-radius: 5px;
+  height: 92vh;
 }
 #home-page {
   margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+}
+body {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 body {
   padding-left: 1rem;
