@@ -15,12 +15,10 @@
   background: #ecedee;
   height: fit-content;
   border-radius: 5px;
-  height: 100vh;
+  height: 92vh;
 }
 #home-page {
   margin: 0 auto;
-  /* padding-left: 2rem;
-  padding-right: 2rem; */
 }
 body {
   padding-left: 1rem;

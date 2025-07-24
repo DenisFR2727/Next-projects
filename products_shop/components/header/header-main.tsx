@@ -12,10 +12,9 @@ import {
   NavbarMenuToggle,
 } from "@heroui/react";
 import Link from "next/link";
-
-import "./header-main.scss";
 import Image from "next/image";
 import NavLink from "./nav-link";
+import "./header-main.scss";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -75,7 +74,7 @@ export default function HeaderMain() {
             <NavLink href="/about">About</NavLink>
           </NavbarItem>
           <NavbarItem>
-            <NavLink href="/about">Cart</NavLink>
+            <NavLink href="/cart">Cart</NavLink>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
