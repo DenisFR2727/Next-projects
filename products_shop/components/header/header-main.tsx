@@ -14,9 +14,11 @@ import {
 import Link from "next/link";
 
 import "./header-main.scss";
+import { useRouter } from "next/navigation";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   const menuItems = [
     { label: "Products", href: "/products" },
@@ -24,7 +26,7 @@ export default function HeaderMain() {
     { label: "Login", href: "#" },
     { label: "Sign Up", href: "#" },
   ];
-  // use client component
+
   return (
     <header>
       <Navbar
@@ -42,7 +44,11 @@ export default function HeaderMain() {
           justify="center"
         >
           <NavbarBrand>
-            <Link href="/" className="font-bold text-inherit">
+            <Link
+              href="/"
+              className="font-bold text-inherit"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Funny Shop
             </Link>
           </NavbarBrand>
@@ -62,25 +68,40 @@ export default function HeaderMain() {
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="lg:flex">
-            <Link href="#">Login</Link>
+            <Link href="#" onClick={() => setIsMenuOpen(false)}>
+              Login
+            </Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
+            <Button
+              as={Link}
+              color="primary"
+              href="#"
+              variant="flat"
+              onPaste={() => setIsMenuOpen(false)}
+            >
               Sign Up
             </Button>
           </NavbarItem>
         </NavbarContent>
 
         {/* Mobile menu */}
-        <NavbarMenu>
+        <NavbarMenu className="z-30" onClick={router.refresh}>
           {menuItems.map((item, index) => (
-            <NavbarMenuItem key={index}>
+            <NavbarMenuItem
+              key={index}
+              onClick={() => {
+                setIsMenuOpen(false);
+                router.push(item.href);
+              }}
+            >
               <HeroLink
                 href={item.href}
                 className="w-full"
                 color={item.label === "Sign Up" ? "primary" : "foreground"}
                 size="lg"
                 as={Link}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </HeroLink>

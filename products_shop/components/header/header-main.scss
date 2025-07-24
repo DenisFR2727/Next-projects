@@ -1,6 +1,19 @@
+// * {
+//   box-sizing: border-box;
+//   padding: 0;
+//   margin: 0;
+// }
 .z-40 {
   max-width: 1920px !important;
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  padding: 0 !important;
+  padding-left: 1rem !important;
+}
+.z-30 {
+  padding-left: 2rem;
+  background: green;
+  max-width: 200px;
+  padding-top: 10px;
 }
