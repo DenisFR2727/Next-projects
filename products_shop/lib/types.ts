@@ -41,3 +41,9 @@ export interface IProducts {
   meta?: Meta;
   images: Images;
 }
+export interface IProductsResponse {
+  products: IProducts[];
+  total: number;
+  skip: number;
+  limit: number;
+}

@@ -1,17 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IProducts } from "@/lib/types";
+import { IProducts, IProductsResponse } from "@/lib/types";
 
 // Define a service using a base URL and expected endpoints
-export const pokemonApi = createApi({
+export const productsApi = createApi({
   reducerPath: "productsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com/products" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com" }),
   endpoints: (build) => ({
-    getPokemonByName: build.query<IProducts, string>({
-      query: (name) => `products/${name}`,
+    getProducts: build.query<IProducts[], void>({
+      query: () => "/products",
+      transformResponse: (response: IProductsResponse) => response.products,
     }),
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery } = pokemonApi;
+export const { useGetProductsQuery } = productsApi;

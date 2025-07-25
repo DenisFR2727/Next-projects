@@ -1,9 +1,9 @@
+import ProductList from "@/components/products/products-list";
+
 export default function ProductsPage() {
   return (
     <div>
-      Products Page Products PageProducts PageProducts PageProducts PageProducts
-      PageProducts PageProducts PageProducts PageProducts PageProducts
-      PageProducts Page
+      <ProductList />
     </div>
   );
 }
