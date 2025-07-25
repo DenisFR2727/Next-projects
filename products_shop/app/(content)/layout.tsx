@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
 import "@/styles/globals.css";
+
+import { Providers } from "../providers";
+import { ReduxProvider } from "../providers/redux-provider";
 import HeaderMain from "@/components/header/header-main";
-import { Providers } from "./providers";
-import { ReduxProvider } from "./providers/redux-provider";
 
 export const metadata: Metadata = {
   title: "Funny Shop",
