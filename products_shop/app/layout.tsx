@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import HeaderMain from "@/components/header/header-main";
 import { Providers } from "./providers";
+import { ReduxProvider } from "./providers/redux-provider";
 
 export const metadata: Metadata = {
   title: "Funny Shop",
@@ -17,12 +18,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body>
-        <Providers>
-          <div id="header">
-            <HeaderMain />
-          </div>
-          <div id="page">{children}</div>
-        </Providers>
+        <ReduxProvider>
+          <Providers>
+            <div id="header">
+              <HeaderMain />
+            </div>
+            <div id="page">{children}</div>
+          </Providers>
+        </ReduxProvider>
       </body>
     </html>
   );
