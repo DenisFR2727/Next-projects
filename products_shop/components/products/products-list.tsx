@@ -1,15 +1,12 @@
-// ProductList.tsx
-"use client";
+import { IProducts, IProductsResponse } from "@/lib/types";
 
-import { useGetProductsQuery } from "@/lib/features/products/api/productsApi";
-
-export default function ProductList() {
-  const { data, isLoading, error } = useGetProductsQuery();
-
-  //   if (isLoading) return <p>Loading...</p>;
-  //   if (error) return <p>Error fetching products</p>;
-
+type ProductListProps = {
+  products: IProducts[];
+};
+export default function ProductList({ products }: ProductListProps) {
   return (
-    <ul>{data?.map((product) => <li key={product.id}>{product.title}</li>)}</ul>
+    <ul>
+      {products?.map((product) => <li key={product.id}>{product.title}</li>)}
+    </ul>
   );
 }
