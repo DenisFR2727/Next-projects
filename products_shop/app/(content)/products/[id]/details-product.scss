@@ -1,0 +1,33 @@
+.details_product {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  .deteils-content {
+    flex-wrap: wrap;
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: space-around;
+
+    img {
+      width: 100%;
+      max-width: 500px;
+      max-height: 500px;
+    }
+    .deteils-info {
+      width: 100%;
+      max-width: 500px;
+      max-height: 500px;
+      padding: 100px 0 0 0;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      p {
+        padding-top: 30px;
+      }
+    }
+  }
+}

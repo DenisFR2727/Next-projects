@@ -16,10 +16,7 @@ interface Meta {
   barcode: string;
   qrCode: string;
 }
-interface Images {
-  fullImage: string;
-  thumbnail: string;
-}
+
 export interface IProducts {
   id: number;
   title: string;
@@ -39,7 +36,8 @@ export interface IProducts {
   returnPolicy: string;
   minimumOrderQuantity: number;
   meta?: Meta;
-  images: Images;
+  images: string;
+  thumbnail: string;
 }
 export interface IProductsResponse {
   products: IProducts[];
