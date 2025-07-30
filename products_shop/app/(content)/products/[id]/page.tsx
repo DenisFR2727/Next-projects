@@ -5,7 +5,7 @@ import "./details-product.scss";
 
 type Props = {
   params: {
-    id: string;
+    id: number;
   };
 };
 
