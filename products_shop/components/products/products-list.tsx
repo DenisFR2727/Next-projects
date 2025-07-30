@@ -1,4 +1,4 @@
-import { IProducts, IProductsResponse } from "@/lib/types";
+import { IProducts } from "@/lib/types";
 
 type ProductListProps = {
   products: IProducts[];

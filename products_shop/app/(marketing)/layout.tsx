@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Next.js Page Routing & Rendering",
-  description: "Learn how to route to different pages.",
+  title: "We are changing the way people shop",
+  description: "people shop.",
 };
 
 export default function RootLayout({
