@@ -26,7 +26,31 @@ export default async function DetailsProductPage({ params }: Props) {
         />
         <div className="deteils-info">
           <h2>{product.title}</h2>
-          <p>{product.brand}</p>
+          <p>
+            Brand: <span>{product.brand}</span>
+          </p>
+          <p>
+            Category: <span>{product.category}</span>
+          </p>
+          <p>
+            Price: <span>{product.price} $</span>
+          </p>
+          <span className="dimensions">Dimensions</span>
+          <ul className="det-dimensions">
+            <li>
+              width:
+              <span className="det-item">{product.dimensions?.width}</span>
+            </li>
+            <li>
+              height:
+              <span className="det-item">{product.dimensions?.height}</span>
+            </li>
+            <li>
+              depth:
+              <span className="det-item">{product.dimensions?.depth}</span>
+            </li>
+          </ul>
+          <p className="desc">{product.description}</p>
         </div>
       </div>
     </div>

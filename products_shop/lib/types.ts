@@ -28,7 +28,7 @@ export interface IProducts {
   stock: number;
   brand: string;
   weight: number;
-  dimensions?: Dimensions[];
+  dimensions?: Dimensions;
   warrantyInformation: string;
   shippingInformation: string;
   availabilityStatus: string;
