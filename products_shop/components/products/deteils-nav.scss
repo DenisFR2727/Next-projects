@@ -1,0 +1,21 @@
+.nav-deteils {
+  display: flex;
+  align-items: center;
+  ul {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    gap: 5px;
+
+    a:active {
+      color: #ff8a05;
+    }
+    li {
+      img {
+        width: 20px;
+        height: 20px;
+        backdrop-filter: white;
+      }
+    }
+  }
+}

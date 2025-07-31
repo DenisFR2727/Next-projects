@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import "./details-product.scss";
+import DeteilsNav from "@/components/products/deteils-nav";
 
 type Props = {
   params: {
@@ -21,14 +22,18 @@ export default async function DetailsProductPage({ params }: Props) {
   return (
     <div className="details_product">
       <div className="deteils-content">
-        <Image
-          src={
-            Array.isArray(product.images) ? product.images[0] : product.images
-          }
-          width={500}
-          height={500}
-          alt={product.title}
-        />
+        <div>
+          <DeteilsNav />
+          <Image
+            src={
+              Array.isArray(product.images) ? product.images[0] : product.images
+            }
+            width={500}
+            height={500}
+            alt={product.title}
+          />
+        </div>
+
         <div className="deteils-info">
           <h2>{product.title}</h2>
           <p>
