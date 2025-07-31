@@ -28,3 +28,31 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+.not_found-product {
+  text-align: center;
+
+  h1 {
+    font-size: 25px;
+    font-weight: 700;
+  }
+  p {
+    font-size: 22px;
+    font-weight: 600;
+    padding-top: 20px;
+  }
+  .go_home-link {
+    padding-top: 20px;
+    a {
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: #006fee;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    a:hover {
+      background: #0e8aaa;
+    }
+  }
+}

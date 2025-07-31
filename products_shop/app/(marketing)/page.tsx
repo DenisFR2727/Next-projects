@@ -3,6 +3,7 @@ import ProductCard from "@/components/products/product-card";
 import Image from "next/image";
 
 import "./marketing.scss";
+import { notFound } from "next/navigation";
 
 export default async function HomePage() {
   const response = await fetch("https://dummyjson.com/products");
@@ -10,6 +11,9 @@ export default async function HomePage() {
   const firstProduct = data.products[0];
   const featuredProducts = data.products.slice(1, 4);
 
+  if (!response.ok) {
+    notFound();
+  }
   return (
     <div id="home">
       <div className="home_layout">

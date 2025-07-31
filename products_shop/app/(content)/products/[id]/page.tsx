@@ -1,4 +1,5 @@
 import { getProduct } from "@/lib/products";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import "./details-product.scss";
@@ -12,6 +13,10 @@ type Props = {
 export default async function DetailsProductPage({ params }: Props) {
   const { id } = await params;
   const product = await getProduct(id);
+
+  if (!product) {
+    notFound();
+  }
 
   return (
     <div className="details_product">
@@ -39,15 +44,21 @@ export default async function DetailsProductPage({ params }: Props) {
           <ul className="det-dimensions">
             <li>
               width:
-              <span className="det-item">{product.dimensions?.width}</span>
+              <span className="det-item">
+                {product.dimensions?.width ?? "N/A"}
+              </span>
             </li>
             <li>
               height:
-              <span className="det-item">{product.dimensions?.height}</span>
+              <span className="det-item">
+                {product.dimensions?.height ?? "N/A"}
+              </span>
             </li>
             <li>
               depth:
-              <span className="det-item">{product.dimensions?.depth}</span>
+              <span className="det-item">
+                {product.dimensions?.depth ?? "N/A"}
+              </span>
             </li>
           </ul>
           <p className="desc">{product.description}</p>
