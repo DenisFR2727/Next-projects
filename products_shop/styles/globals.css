@@ -15,7 +15,7 @@
   background: #ecedee;
   height: fit-content;
   border-radius: 5px;
-  height: 92vh;
+  min-height: 92vh;
 }
 #home-page {
   margin: 0 auto;
