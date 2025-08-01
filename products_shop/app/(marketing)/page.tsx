@@ -4,26 +4,24 @@ import Image from "next/image";
 
 import "./marketing.scss";
 import { notFound } from "next/navigation";
+import { getProducts } from "@/lib/products";
+import SlideProducts from "@/components/products/slide/slide-products";
 
 export default async function HomePage() {
-  const response = await fetch("https://dummyjson.com/products");
-  const data = await response.json();
-  const firstProduct = data.products[0];
-  const featuredProducts = data.products.slice(1, 4);
+  const response = await getProducts();
+  const data = response.products;
 
-  if (!response.ok) {
+  const firstProduct = data[0];
+  const featuredProducts = data.slice(1, 4);
+
+  if (!response.products) {
     notFound();
   }
   return (
     <div id="home">
       <div className="home_layout">
         <div className="home_marketing">
-          <Image
-            src={firstProduct.thumbnail}
-            width={500}
-            height={500}
-            alt="full-img"
-          />
+          <SlideProducts products={data} />
           <div className="home_text">
             <h1>We are changing the way people shop</h1>
             <p>
