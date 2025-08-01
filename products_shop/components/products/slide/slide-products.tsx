@@ -2,6 +2,8 @@
 import { IProducts } from "@/lib/types";
 import { useEffect, useState } from "react";
 
+import "./slide-products.scss";
+
 interface ProductsProps {
   products: IProducts[];
 }
@@ -27,17 +29,18 @@ export default function SlideProducts({ products }: ProductsProps) {
     return () => clearInterval(interval);
   }, [index, products]);
 
-  const current = products[index];
-
   return (
-    <>
-      {current.thumbnail ? (
-        <img
-          style={{ width: "500px", height: "500px" }}
-          src={current.thumbnail}
-          alt="Product image"
-        />
-      ) : null}
-    </>
+    <div className="slide-products">
+      {products.map((product, i) =>
+        product.thumbnail ? (
+          <img
+            key={i}
+            src={product.thumbnail}
+            alt={`Product ${i}`}
+            className={i === index ? "active" : ""}
+          />
+        ) : null
+      )}
+    </div>
   );
 }

@@ -87,7 +87,7 @@
     //  background: #ecedee;
   }
   .home_marketing {
-    img {
+    .slide-products {
       display: none;
     }
     .home_text {
@@ -119,6 +119,22 @@
     margin-bottom: 0 !important;
     .card-product {
       padding: 10px;
+    }
+  }
+}
+@media (max-width: 376px) {
+  #home {
+    height: 100%;
+    padding-top: 20px;
+  }
+  .home_marketing {
+    display: flex;
+    flex-wrap: wrap-reverse;
+
+    .slide-products {
+      display: block;
+      height: 400px;
+      border: 1px solid #52525b;
     }
   }
 }
