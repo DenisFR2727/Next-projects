@@ -15,18 +15,13 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
+import { menuItems } from "@/lib/features/links";
+
 import "./header-main.scss";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const router = useRouter();
-
-  const menuItems = [
-    { label: "Products", href: "/products" },
-    { label: "About", href: "/about" },
-    { label: "Login", href: "#" },
-    { label: "Sign Up", href: "#" },
-  ];
 
   return (
     <header>

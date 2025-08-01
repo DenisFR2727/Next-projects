@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import "./details-product.scss";
 import DeteilsNav from "@/components/products/deteils-nav";
+import Link from "next/link";
 
 type Props = {
   params: {
@@ -24,16 +25,19 @@ export default async function DetailsProductPage({ params }: Props) {
       <div className="deteils-content">
         <div>
           <DeteilsNav />
-          <Image
-            src={
-              Array.isArray(product.images) ? product.images[0] : product.images
-            }
-            width={500}
-            height={500}
-            alt={product.title}
-          />
+          <Link href={`/products/${id}/image`}>
+            <Image
+              src={
+                Array.isArray(product.images)
+                  ? product.images[0]
+                  : product.images
+              }
+              width={400}
+              height={400}
+              alt={product.title}
+            />
+          </Link>
         </div>
-
         <div className="deteils-info">
           <h2>{product.title}</h2>
           <p>
