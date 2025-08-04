@@ -19,12 +19,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           alt={product.title}
         />
       </Link>
-      <h2>
-        {product.title.split(" ").length > 2
-          ? product.title.split(" ").slice(0, 2).join(" ") + "..."
-          : product.title}
-      </h2>
-      <p className="card-product-price">{product.price} $</p>
+      <div className="card-info">
+        <h2 className="title-card">
+          {product.title.split(" ").length > 2
+            ? product.title.split(" ").slice(0, 2).join(" ") + "..."
+            : product.title}
+        </h2>
+        <p className="card-product-price">{product.price} $</p>
+      </div>
     </div>
   );
 }
