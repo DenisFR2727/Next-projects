@@ -5,15 +5,20 @@ export default function DeteilsNav() {
   return (
     <nav className="nav-deteils">
       <ul>
-        <li>
-          <Link href={`/`}>Home</Link>
-        </li>
-        <li>
-          <img src="/arrow_forward_next_right.svg" alt="arrow" />
-        </li>
-        <li>
-          <Link href={`/products`}>Products</Link>
-        </li>
+        <div className="deteils-link">
+          <li>
+            <Link href={`/`}>Home</Link>
+          </li>
+          <li>
+            <img src="/arrow_forward_next_right.svg" alt="arrow" />
+          </li>
+          <li>
+            <Link href={`/products`}>Products</Link>
+          </li>
+        </div>
+        <div>
+          <Link href={`/`}>Back</Link>
+        </div>
       </ul>
     </nav>
   );
