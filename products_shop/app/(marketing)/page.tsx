@@ -1,17 +1,15 @@
 import Link from "next/link";
 import ProductCard from "@/components/products/product-card";
-import Image from "next/image";
 
-import "./marketing.scss";
 import { notFound } from "next/navigation";
 import { getProducts } from "@/lib/products";
 import SlideProducts from "@/components/products/slide/slide-products";
 
+import "./marketing.scss";
 export default async function HomePage() {
   const response = await getProducts();
   const data = response.products;
 
-  const firstProduct = data[0];
   const featuredProducts = data.slice(1, 4);
 
   if (!response.products) {

@@ -1,12 +1,16 @@
 import { IProducts } from "@/lib/types";
+import ProductCard from "./product-card";
+import "./products-list.scss";
 
 type ProductListProps = {
   products: IProducts[];
 };
 export default function ProductList({ products }: ProductListProps) {
   return (
-    <ul>
-      {products?.map((product) => <li key={product.id}>{product.title}</li>)}
+    <ul className="products-items">
+      {products?.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </ul>
   );
 }
