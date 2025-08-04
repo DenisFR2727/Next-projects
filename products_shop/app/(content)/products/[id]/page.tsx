@@ -1,11 +1,11 @@
 import { getProduct } from "@/lib/products";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 
-import "./details-product.scss";
 import DeteilsNav from "@/components/products/deteils-nav";
-import Link from "next/link";
 
+import "./details-product.scss";
 type Props = {
   params: {
     id: number;
@@ -15,6 +15,10 @@ type Props = {
 export default async function DetailsProductPage({ params }: Props) {
   const { id } = await params;
   const product = await getProduct(id);
+  const mainImage =
+    Array.isArray(product?.images) && product.images.length
+      ? product.images[0]
+      : "/fallback.jpg";
 
   if (!product) {
     notFound();
@@ -27,11 +31,7 @@ export default async function DetailsProductPage({ params }: Props) {
           <DeteilsNav />
           <Link href={`/products/${id}/image`}>
             <Image
-              src={
-                Array.isArray(product.images)
-                  ? product.images[0]
-                  : product.images
-              }
+              src={mainImage}
               width={400}
               height={400}
               alt={product.title}
@@ -47,7 +47,7 @@ export default async function DetailsProductPage({ params }: Props) {
             Category: <span>{product.category}</span>
           </p>
           <p>
-            Price: <span>{product.price} $</span>
+            Price: <span>{product?.price ?? "N/A"} $</span>
           </p>
           <span className="dimensions">Dimensions</span>
           <ul className="det-dimensions">

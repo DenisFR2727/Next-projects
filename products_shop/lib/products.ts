@@ -1,3 +1,4 @@
+"use server";
 import { IProducts } from "./types";
 
 export async function getProduct(id: number): Promise<IProducts | null> {

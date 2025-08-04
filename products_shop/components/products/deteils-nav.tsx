@@ -1,6 +1,6 @@
 import Link from "next/link";
-
 import "./deteils-nav.scss";
+
 export default function DeteilsNav() {
   return (
     <nav className="nav-deteils">
