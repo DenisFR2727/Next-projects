@@ -8,17 +8,17 @@ export default function DeteilsNav() {
     <nav className="nav-deteils">
       <ul>
         <div className="deteils-link">
-          <li>
+          <li className="link-item-line">
             <Link href={`/`}>Home</Link>
           </li>
           <li>
             <img src="/arrow_forward_next_right.svg" alt="arrow" />
           </li>
-          <li>
+          <li className="link-item-line">
             <Link href={`/products`}>Products</Link>
           </li>
         </div>
-        <div>
+        <div className="link-item-line">
           <BackDropNav>Back</BackDropNav>
         </div>
       </ul>
