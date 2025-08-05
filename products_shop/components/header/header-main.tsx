@@ -18,6 +18,7 @@ import NavLink from "./nav-link";
 import { menuItems } from "@/lib/features/links";
 
 import "./header-main.scss";
+import { TiShoppingCart } from "react-icons/ti";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -75,6 +76,11 @@ export default function HeaderMain() {
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
+          <NavbarItem>
+            <Link href={`/cart`}>
+              <TiShoppingCart className="nav-cart-icon" />
+            </Link>
+          </NavbarItem>
           <NavbarItem className="lg:flex ">
             <Link href="#">
               <span className="header_login-nav">Login</span>

@@ -1,6 +1,7 @@
 import { IProducts } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
+import Cart from "./cart/cart-products";
 
 type ProductCardProps = {
   product: IProducts;
@@ -27,6 +28,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </h2>
         <p className="card-product-price">{product.price} $</p>
       </div>
+      <Cart />
     </div>
   );
 }

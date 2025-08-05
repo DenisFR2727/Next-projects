@@ -1,4 +1,6 @@
 .card-product {
+  position: relative;
+  z-index: 1;
   padding: 30px;
   background: #f2eafa;
   border-radius: 10px;
