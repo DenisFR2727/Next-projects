@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Cart from "./cart/cart-products";
 
+import "./product-card.scss";
+
 type ProductCardProps = {
   product: IProducts;
 };
-import "./product-card.scss";
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
@@ -28,7 +29,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </h2>
         <p className="card-product-price">{product.price} $</p>
       </div>
-      <Cart />
+      <Cart product={product} />
     </div>
   );
 }
