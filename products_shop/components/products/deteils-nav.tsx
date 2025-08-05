@@ -1,4 +1,6 @@
 import Link from "next/link";
+import BackDropNav from "./nav-link-backdrop";
+
 import "./deteils-nav.scss";
 
 export default function DeteilsNav() {
@@ -17,7 +19,7 @@ export default function DeteilsNav() {
           </li>
         </div>
         <div>
-          <Link href={`/`}>Back</Link>
+          <BackDropNav>Back</BackDropNav>
         </div>
       </ul>
     </nav>
