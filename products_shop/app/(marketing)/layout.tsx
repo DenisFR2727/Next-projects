@@ -1,3 +1,5 @@
+import { ReduxProvider } from "../providers/redux-provider";
+
 export const metadata = {
   title: "We are changing the way people shop",
   description: "people shop.",
@@ -10,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body>{children}</body>
+      <ReduxProvider>
+        <body>{children}</body>
+      </ReduxProvider>
     </html>
   );
 }
