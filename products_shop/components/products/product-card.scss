@@ -20,7 +20,7 @@
     font-size: 20px;
   }
   .card-product-price {
-    color: #27272a;
+    color: #9353d3;
     text-align: center;
   }
 }
@@ -83,12 +83,17 @@
       justify-content: center;
 
       .card-product-img {
-        max-width: 200px !important;
+        max-width: 180px !important;
+        object-fit: contain;
+        height: auto;
       }
     }
 
     .card-info {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
       .title-card {
         padding: 0;
         font-weight: 500;
@@ -104,6 +109,12 @@
 @media (max-width: 445px) {
   .card-product {
     max-width: 180px !important;
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
 
     a {
       .card-product-img {
@@ -126,7 +137,6 @@
     }
 
     .card-info {
-      display: block;
       .title-card {
         padding: 0;
       }
