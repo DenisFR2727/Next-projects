@@ -51,22 +51,24 @@ export default function Cart() {
           ))}
         </ul>
         <div className="order-total">
-          <p className="subtotal">
-            <span>Subtotal</span>
-            <span>$1200</span>
-          </p>
-          <p className="shipping">
-            <span>Shipping</span>
-            <span>$5.00</span>
-          </p>
-          <p className="tax">
-            <span>Tax</span>
-            <span>$129.99</span>
-          </p>
-          <p className="order-total-sum">
-            <span>Order Total</span>
-            <span>$1,434.91</span>
-          </p>
+          <div className="order-total-border">
+            <p className="subtotal ">
+              <span>Subtotal</span>
+              <span>$1200</span>
+            </p>
+            <p className="shipping shipping-line">
+              <span>Shipping</span>
+              <span>$5.00</span>
+            </p>
+            <p className="tax tax-line">
+              <span>Tax</span>
+              <span>$129.99</span>
+            </p>
+            <p className="order-total-sum total-line">
+              <span>Order Total</span>
+              <span>$1,434.91</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

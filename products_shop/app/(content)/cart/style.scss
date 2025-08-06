@@ -28,11 +28,13 @@
 
     .cart-order {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
       li {
         width: 100%;
         display: flex;
-
-        gap: 20px;
         border-bottom: 1px solid grey;
 
         .order-img {
@@ -46,7 +48,7 @@
         }
         .order-title {
           width: 300px;
-          margin-left: 50px;
+          margin-left: 40px;
           h2 {
             font-weight: 600;
           }
@@ -99,6 +101,32 @@
           .order-price {
             color: #9353d3;
           }
+        }
+      }
+    }
+    .order-total {
+      width: 400px;
+      display: flex;
+      background: rgb(59 130 246 / 0.5);
+      border-radius: 10px;
+
+      .order-total-border {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 30px;
+
+        p {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 10px;
+        }
+        .shipping-line,
+        .tax-line,
+        .total-line {
+          border-top: 1px solid grey;
+          padding-top: 10px;
         }
       }
     }
