@@ -19,9 +19,11 @@ import { menuItems } from "@/lib/features/links";
 
 import "./header-main.scss";
 import { TiShoppingCart } from "react-icons/ti";
+import { useAppSelector } from "@/lib/hooks";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const isCartItems = useAppSelector((state) => state.cartReducer.cart);
   const router = useRouter();
 
   return (
@@ -78,7 +80,16 @@ export default function HeaderMain() {
         <NavbarContent justify="end">
           <NavbarItem>
             <Link href={`/cart`}>
-              <TiShoppingCart className="nav-cart-icon" />
+              <div className="header-cart">
+                <TiShoppingCart className="nav-cart-icon" />
+                {isCartItems.length ? (
+                  <div className="nav-cart-count">
+                    <span>{isCartItems.length}</span>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
             </Link>
           </NavbarItem>
           <NavbarItem className="lg:flex ">
