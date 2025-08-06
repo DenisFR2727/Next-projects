@@ -24,3 +24,24 @@
   font-size: 35px;
   color: #a1a1aa;
 }
+.header-cart {
+  position: relative;
+}
+.nav-cart-count {
+  position: absolute;
+  text-align: center;
+  bottom: -10px;
+  right: -10px;
+  width: 30px;
+  height: 25px;
+  border-radius: 50%;
+  background: #17c964;
+  color: #fff;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
