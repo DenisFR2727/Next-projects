@@ -1,7 +1,7 @@
 import { IProducts } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import Cart from "./cart/cart-products";
+import Cart from "./cart/cart-products-icon";
 
 import "./product-card.scss";
 
