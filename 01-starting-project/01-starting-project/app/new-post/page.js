@@ -1,4 +1,24 @@
+import { storePost } from "@/lib/posts";
+import { redirect } from "next/navigation";
+
 export default function NewPostPage() {
+  async function createPost(formData) {
+    "use server";
+
+    const title = formData.get("title");
+    const image = formData.get("image");
+    const content = formData.get("content");
+
+    await storePost({
+      imageUrl: "",
+      title,
+      image,
+      content,
+      userId: 1,
+    });
+    redirect("/feed");
+  }
+
   return (
     <>
       <h1>Create a new post</h1>
