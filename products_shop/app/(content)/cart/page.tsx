@@ -1,10 +1,13 @@
 "use client";
 
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import "./style.scss";
+import { amountToPriceProduct } from "@/lib/features/products/cartSlice";
 
 export default function Cart() {
+  const dispatch = useAppDispatch();
   const orders = useAppSelector((state) => state.cartReducer.cart);
+  const totalPrice = useAppSelector((state) => state.cartReducer.totalPrice);
 
   return (
     <>
@@ -33,15 +36,22 @@ export default function Cart() {
                     <div className="order-amount">
                       <h2>Amount</h2>
                       <select
-                        name=""
-                        id=""
+                        value={order.amount}
                         className="order-amount-item order-select"
+                        onChange={(e) =>
+                          dispatch(
+                            amountToPriceProduct({
+                              id: order.id,
+                              amount: Number(e.target.value),
+                            })
+                          )
+                        }
                       >
                         {Array.from(
                           { length: order.stock },
                           (_, index) => index + 1
                         ).map((n, i) => (
-                          <option key={i} value="">
+                          <option key={n} value={n}>
                             {n}
                           </option>
                         ))}
@@ -73,7 +83,7 @@ export default function Cart() {
                 </p>
                 <p className="order-total-sum total-line">
                   <span>Order Total</span>
-                  <span>$1,434.91</span>
+                  <span>$ {totalPrice.toFixed(2)}</span>
                 </p>
               </div>
             </div>
