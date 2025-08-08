@@ -16,10 +16,10 @@ import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
 import { menuItems } from "@/lib/features/links";
-
-import "./header-main.scss";
 import { TiShoppingCart } from "react-icons/ti";
 import { useAppSelector } from "@/lib/hooks";
+
+import "./header-main.scss";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -125,7 +125,7 @@ export default function HeaderMain() {
             >
               <HeroLink
                 href={item.href}
-                className="w-full"
+                className="w-full link-underline"
                 color={item.label === "Sign Up" ? "primary" : "foreground"}
                 size="lg"
                 as={Link}
