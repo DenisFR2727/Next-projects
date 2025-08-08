@@ -16,10 +16,10 @@ import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
 import { menuItems } from "@/lib/features/links";
-
-import "./header-main.scss";
 import { TiShoppingCart } from "react-icons/ti";
 import { useAppSelector } from "@/lib/hooks";
+
+import "./header-main.scss";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -92,12 +92,12 @@ export default function HeaderMain() {
               </div>
             </Link>
           </NavbarItem>
-          <NavbarItem className="lg:flex ">
+          <NavbarItem className="lg:flex login-nav">
             <Link href="#">
               <span className="header_login-nav">Login</span>
             </Link>
           </NavbarItem>
-          <NavbarItem>
+          <NavbarItem className="sign-up-nav">
             <Button
               as={Link}
               color="primary"
@@ -111,7 +111,10 @@ export default function HeaderMain() {
         </NavbarContent>
 
         {/* Mobile menu */}
-        <NavbarMenu className="z-30" onClick={router.refresh}>
+        <NavbarMenu
+          className={`z-30 ${isMenuOpen ? "menuOpen" : "menuClose"}`}
+          onClick={router.refresh}
+        >
           {menuItems.map((item, index) => (
             <NavbarMenuItem
               key={index}
@@ -122,7 +125,7 @@ export default function HeaderMain() {
             >
               <HeroLink
                 href={item.href}
-                className="w-full"
+                className="w-full link-underline"
                 color={item.label === "Sign Up" ? "primary" : "foreground"}
                 size="lg"
                 as={Link}

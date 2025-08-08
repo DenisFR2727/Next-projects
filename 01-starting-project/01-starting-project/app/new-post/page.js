@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { FormSubmit } from "@/components/form-submit";
 import { storePost } from "@/lib/posts";
 import { redirect } from "next/navigation";
@@ -20,6 +21,9 @@ export default function NewPostPage() {
     redirect("/feed");
   }
 
+=======
+export default function NewPostPage() {
+>>>>>>> feature/cartLogic
   return (
     <>
       <h1>Create a new post</h1>
@@ -42,7 +46,12 @@ export default function NewPostPage() {
           <textarea id="content" name="content" rows="5" />
         </p>
         <p className="form-actions">
+<<<<<<< HEAD
           <FormSubmit />
+=======
+          <button type="reset">Reset</button>
+          <button>Create Post</button>
+>>>>>>> feature/cartLogic
         </p>
       </form>
     </>

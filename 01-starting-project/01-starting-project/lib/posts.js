@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import sql from "better-sqlite3";
 
 const db = new sql("posts.db");
+=======
+import sql from 'better-sqlite3';
+
+const db = new sql('posts.db');
+>>>>>>> feature/cartLogic
 
 function initDb() {
   db.exec(`
@@ -30,7 +36,11 @@ function initDb() {
     )`);
 
   // Creating two dummy users if they don't exist already
+<<<<<<< HEAD
   const stmt = db.prepare("SELECT COUNT(*) AS count FROM users");
+=======
+  const stmt = db.prepare('SELECT COUNT(*) AS count FROM users');
+>>>>>>> feature/cartLogic
 
   if (stmt.get().count === 0) {
     db.exec(`
@@ -48,10 +58,17 @@ function initDb() {
 initDb();
 
 export async function getPosts(maxNumber) {
+<<<<<<< HEAD
   let limitClause = "";
 
   if (maxNumber) {
     limitClause = "LIMIT ?";
+=======
+  let limitClause = '';
+
+  if (maxNumber) {
+    limitClause = 'LIMIT ?';
+>>>>>>> feature/cartLogic
   }
 
   const stmt = db.prepare(`
