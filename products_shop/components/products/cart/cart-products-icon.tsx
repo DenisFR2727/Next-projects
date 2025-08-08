@@ -1,7 +1,6 @@
 "use client";
 
 import { TiShoppingCart } from "react-icons/ti";
-// import { IProducts } from "@/lib/types";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import {
   addProductToCart,

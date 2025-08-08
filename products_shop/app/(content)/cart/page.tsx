@@ -2,11 +2,15 @@
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import "./style.scss";
-import { amountToPriceProduct } from "@/lib/features/products/cartSlice";
+import {
+  amountToPriceProduct,
+  removeOrder,
+} from "@/lib/features/products/cartSlice";
 
 export default function Cart() {
   const dispatch = useAppDispatch();
   const orders = useAppSelector((state) => state.cartReducer.cart);
+  const shipping = useAppSelector((state) => state.cartReducer.shipping);
   const totalPrice = useAppSelector((state) => state.cartReducer.totalPrice);
 
   return (
@@ -56,7 +60,10 @@ export default function Cart() {
                           </option>
                         ))}
                       </select>
-                      <button className="order-amount-item order-remove">
+                      <button
+                        className="order-amount-item order-remove"
+                        onClick={() => dispatch(removeOrder(order.id))}
+                      >
                         remove
                       </button>
                     </div>
@@ -71,15 +78,15 @@ export default function Cart() {
               <div className="order-total-border">
                 <p className="subtotal ">
                   <span>Subtotal</span>
-                  <span>$1200</span>
+                  <span>$ {(totalPrice - shipping).toFixed(2)}</span>
                 </p>
                 <p className="shipping shipping-line">
                   <span>Shipping</span>
-                  <span>$5.00</span>
+                  <span>$ {shipping}</span>
                 </p>
                 <p className="tax tax-line">
                   <span>Tax</span>
-                  <span>$129.99</span>
+                  <span>$ 0</span>
                 </p>
                 <p className="order-total-sum total-line">
                   <span>Order Total</span>

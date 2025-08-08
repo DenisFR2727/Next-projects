@@ -8,11 +8,15 @@ export interface CartProduct extends IProducts {
 interface CartState {
   cart: CartProduct[];
   totalPrice: number;
+  shipping: number;
+  shippingPriceTotal: number;
 }
 
 const initialState: CartState = {
   cart: [],
   totalPrice: 0,
+  shipping: 10,
+  shippingPriceTotal: 0,
 };
 const cartSlice = createSlice({
   name: "products",
@@ -25,6 +29,8 @@ const cartSlice = createSlice({
       if (!isAddProduct) {
         state.cart.push({ ...action.payload, amount: 1 });
         state.totalPrice += action.payload.price;
+
+        //   state.totalPrice = state.totalPrice + state.shipping;
       }
     },
     amountToPriceProduct(
@@ -42,8 +48,25 @@ const cartSlice = createSlice({
         (acc, item) => acc + item.price * item.amount,
         0
       );
+      state.totalPrice = state.totalPrice + state.shipping;
+    },
+    removeOrder(state, action: PayloadAction<number>) {
+      const isProduct = state.cart.some(
+        (product) => product.id === action.payload
+      );
+      if (!isProduct) return;
+
+      state.cart = state.cart.filter(
+        (product) => product.id !== action.payload
+      );
+      state.totalPrice = state.cart.reduce(
+        (acc, next) => acc + next.price * next.amount,
+        0
+      );
+      state.totalPrice = state.totalPrice + state.shipping;
     },
   },
 });
-export const { addProductToCart, amountToPriceProduct } = cartSlice.actions;
+export const { addProductToCart, amountToPriceProduct, removeOrder } =
+  cartSlice.actions;
 export default cartSlice.reducer;
