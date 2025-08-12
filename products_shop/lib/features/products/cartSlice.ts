@@ -29,8 +29,6 @@ const cartSlice = createSlice({
       if (!isAddProduct) {
         state.cart.push({ ...action.payload, amount: 1 });
         state.totalPrice += action.payload.price;
-
-        //   state.totalPrice = state.totalPrice + state.shipping;
       }
     },
     amountToPriceProduct(
