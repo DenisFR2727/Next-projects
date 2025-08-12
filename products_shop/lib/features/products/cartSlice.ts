@@ -10,6 +10,7 @@ interface CartState {
   totalPrice: number;
   shipping: number;
   shippingPriceTotal: number;
+  togglePanel: boolean;
 }
 
 const initialState: CartState = {
@@ -17,6 +18,7 @@ const initialState: CartState = {
   totalPrice: 0,
   shipping: 10,
   shippingPriceTotal: 0,
+  togglePanel: false,
 };
 const cartSlice = createSlice({
   name: "products",
@@ -63,8 +65,15 @@ const cartSlice = createSlice({
       );
       state.totalPrice = state.totalPrice + state.shipping;
     },
+    togglePanel(state, action: PayloadAction<boolean>) {
+      state.togglePanel = action.payload;
+    },
   },
 });
-export const { addProductToCart, amountToPriceProduct, removeOrder } =
-  cartSlice.actions;
+export const {
+  addProductToCart,
+  amountToPriceProduct,
+  removeOrder,
+  togglePanel,
+} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -12,6 +12,16 @@
     user-select: none;
   }
 }
+.products-items-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  .card-product {
+    width: 100%;
+  }
+}
 @media (max-width: 1825px) {
   .products-items {
     .card-product {
