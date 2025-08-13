@@ -7,11 +7,12 @@ import "./product-card.scss";
 
 type ProductCardProps = {
   product: IProducts;
+  isToggle: boolean;
 };
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, isToggle }: ProductCardProps) {
   return (
-    <div className="card-product">
+    <div className={!isToggle ? "card-product" : "card-product-list"}>
       <Link href={`/products/${product.id}`}>
         <Image
           className="card-product-img"

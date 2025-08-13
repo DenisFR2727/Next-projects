@@ -11,9 +11,9 @@ export default function ProductList({ products }: ProductListProps) {
   const isToggle = useAppSelector((state) => state.cartReducer.togglePanel);
 
   return (
-    <ul className={!isToggle ? "products-items" : "products-items-list"}>
+    <ul className={"products-items"}>
       {products?.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} isToggle={isToggle} />
       ))}
     </ul>
   );

@@ -1,3 +1,5 @@
+import SpinnerItem from "@/components/spinners/spinner";
+
 export default function ProductsLoading() {
-  return <p>Loading Product...</p>;
+  return <SpinnerItem />;
 }
