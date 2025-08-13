@@ -38,6 +38,7 @@ export interface IProducts {
   meta?: Meta;
   images: string;
   thumbnail: string;
+  amount: number;
 }
 export interface IProductsResponse {
   products: IProducts[];
