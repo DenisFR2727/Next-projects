@@ -1,6 +1,6 @@
 import { SpinnerDotted } from "spinners-react";
 import "./spinner.scss";
-// Spinner
+// Spinner update
 export default function SpinnerItem() {
   return (
     <div className="spinner">
