@@ -16,7 +16,6 @@ export default function NewPostPage() {
       userId: 1,
     });
     redirect("/feed");
-    console.log(title, image, content);
   }
 
   return (
