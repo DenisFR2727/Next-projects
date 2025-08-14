@@ -20,8 +20,6 @@ export default function NewPostPage() {
     });
     redirect("/feed");
   }
-
-
   return (
     <>
       <h1>Create a new post</h1>
