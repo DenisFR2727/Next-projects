@@ -4,7 +4,7 @@ import ProductCard from "./product-card";
 import { useAppSelector } from "@/lib/hooks";
 import "./products-list.scss";
 
-type ProductListProps = {
+export type ProductListProps = {
   products: IProducts[];
 };
 export default function ProductList({ products }: ProductListProps) {
