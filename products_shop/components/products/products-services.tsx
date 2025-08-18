@@ -1,11 +1,14 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import DinamicPanel from "./dinamic-panel/dinamic-panel";
 import FilterPanel from "./filter/filter-panel";
 import ProductList, { ProductListProps } from "./products-list";
+import { useAppSelector } from "@/lib/hooks";
 
 export default function ProductsServices({ products }: ProductListProps) {
-  const [serchProducts, setSearchProducts] = useState<string>("");
+  const serchProducts = useAppSelector(
+    (state) => state.filterReducer.serchProducts
+  );
 
   const filteredProducts = useMemo(() => {
     let result = [...products];
@@ -20,10 +23,7 @@ export default function ProductsServices({ products }: ProductListProps) {
 
   return (
     <div className="products_list">
-      <FilterPanel
-        serchProducts={serchProducts}
-        setSearchProducts={setSearchProducts}
-      />
+      <FilterPanel />
       <DinamicPanel lengItems={products} />
       <ProductList products={filteredProducts} />
     </div>
