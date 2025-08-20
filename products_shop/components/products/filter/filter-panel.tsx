@@ -1,40 +1,22 @@
 "use client";
-import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import {
-  resetAllValueFilter,
-  setRangePrice,
-  setSearchProducts,
-  setSelectedCategory,
-} from "@/lib/features/products/filterProductsSlice";
 import { ProductListProps } from "../products-list";
-
+import { useFilterForm } from "./hooks";
 import "./filter-panel.scss";
 
 export default function FilterPanel({ products }: ProductListProps) {
-  const dispatch = useAppDispatch();
+  const {
+    searchTitle,
+    selectedCategoryCurrent,
+    setSelectedCategoriesCurrent,
+    defaultRange,
+    setDefaultRange,
+    changeSearch,
+    submitSearch,
+    resetValuesForm,
+  } = useFilterForm();
+
   const categories = products.map((p) => p.category);
   const uniqCategories = [...new Set(categories)];
-
-  const [searchTitle, setSearchTitle] = useState<string>("");
-  const [selectedCategory, setSelectedCategories] = useState<string>("All");
-  const [defaultRange, setDefaultRange] = useState<number>(3000);
-
-  const changeSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchTitle(e.target.value);
-  };
-
-  const submitSearch = (): void => {
-    dispatch(setSearchProducts(searchTitle));
-    dispatch(setSelectedCategory(selectedCategory));
-    dispatch(setRangePrice(defaultRange));
-  };
-  const resetValuesForm = (): void => {
-    setSearchTitle("");
-    setSelectedCategories("All");
-    setDefaultRange(3000);
-    dispatch(resetAllValueFilter(""));
-  };
 
   return (
     <div className="filter_panel">
@@ -52,8 +34,8 @@ export default function FilterPanel({ products }: ProductListProps) {
           <label>Select category</label>
           <select
             className="select_item-category"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategories(e.target.value)}
+            value={selectedCategoryCurrent}
+            onChange={(e) => setSelectedCategoriesCurrent(e.target.value)}
           >
             <option value="All">All</option>
             {uniqCategories.map((category) => (
@@ -66,7 +48,7 @@ export default function FilterPanel({ products }: ProductListProps) {
         <div className="select_price">
           <div className="select_price-value">
             <label htmlFor="">Select price</label>
-            <p>{defaultRange}</p>
+            <p>${defaultRange}</p>
           </div>
           <input
             className="range_price"
