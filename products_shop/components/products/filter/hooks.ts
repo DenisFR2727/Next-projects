@@ -1,17 +1,23 @@
 "use client";
-import { useAppSelector } from "@/lib/hooks";
-import { useMemo } from "react";
+import {
+  resetAllValueFilter,
+  setRangePrice,
+  setSearchProducts,
+  setSelectedCategory,
+} from "@/lib/features/products/filterProductsSlice";
+import {
+  selectedCategorySelector,
+  selectedRangeSelector,
+  serchProductsSelector,
+} from "@/lib/features/products/filterSelectors";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useMemo, useState } from "react";
+import { IProducts } from "@/lib/types";
 
-export function useFilterProducts(products: any) {
-  const serchProducts = useAppSelector(
-    (state) => state.filterReducer.serchProducts
-  );
-  const selectedCategory = useAppSelector(
-    (state) => state.filterReducer.selectedCategory
-  );
-  const selectedRange = useAppSelector(
-    (state) => state.filterReducer.rangePrice
-  );
+export function useFilterProducts(products: IProducts[]) {
+  const serchProducts = useAppSelector(serchProductsSelector);
+  const selectedCategory = useAppSelector(selectedCategorySelector);
+  const selectedRange = useAppSelector(selectedRangeSelector);
 
   const filteredProducts = useMemo(() => {
     let result = [...products];
@@ -31,4 +37,39 @@ export function useFilterProducts(products: any) {
   }, [products, serchProducts, selectedRange, selectedCategory]);
 
   return { filteredProducts };
+}
+
+export function useFilterForm() {
+  const dispatch = useAppDispatch();
+  const [searchTitle, setSearchTitle] = useState<string>("");
+  const [selectedCategoryCurrent, setSelectedCategoriesCurrent] =
+    useState<string>("All");
+  const [defaultRange, setDefaultRange] = useState<number>(3000);
+
+  const changeSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearchTitle(e.target.value);
+  };
+
+  const submitSearch = (): void => {
+    dispatch(setSearchProducts(searchTitle));
+    dispatch(setSelectedCategory(selectedCategoryCurrent));
+    dispatch(setRangePrice(defaultRange));
+  };
+  const resetValuesForm = (): void => {
+    setSearchTitle("");
+    setSelectedCategoriesCurrent("All");
+    setDefaultRange(3000);
+    dispatch(resetAllValueFilter(""));
+  };
+
+  return {
+    searchTitle,
+    selectedCategoryCurrent,
+    setSelectedCategoriesCurrent,
+    defaultRange,
+    setDefaultRange,
+    changeSearch,
+    submitSearch,
+    resetValuesForm,
+  };
 }
