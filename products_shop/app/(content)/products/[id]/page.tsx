@@ -6,13 +6,16 @@ import Image from "next/image";
 import DeteilsNav from "@/components/products/deteils-nav";
 
 import "./details-product.scss";
-type Props = {
+import Cart from "@/components/products/cart/cart-products-icon";
+import AddToCart from "@/components/products/cart/cart-button-add";
+
+type PropsId = {
   params: {
     id: number;
   };
 };
 
-export default async function DetailsProductPage({ params }: Props) {
+export default async function DetailsProductPage({ params }: PropsId) {
   const { id } = await params;
   const product = await getProduct(id);
   const mainImage =
@@ -71,6 +74,7 @@ export default async function DetailsProductPage({ params }: Props) {
             </li>
           </ul>
           <p className="desc">{product.description}</p>
+          <AddToCart product={product} />
         </div>
       </div>
     </div>
