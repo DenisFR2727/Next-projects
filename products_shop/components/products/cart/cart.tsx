@@ -8,16 +8,20 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 import "./cart.scss";
 import {
+  selectDiscountedSubtotal,
+  selectDiscountedTotalPrice,
   selectOrders,
   selectShipping,
-  selectTotalPrice,
+  selectSubtotal,
 } from "@/lib/features/products/cartSelectors";
 
 export default function CartProducts() {
   const dispatch = useAppDispatch();
   const orders = useAppSelector(selectOrders);
   const shipping = useAppSelector(selectShipping);
-  const totalPrice = useAppSelector(selectTotalPrice);
+  const subtotal = useAppSelector(selectSubtotal);
+  const discountedSubtotal = useAppSelector(selectDiscountedSubtotal);
+  const discountedTotalPrice = useAppSelector(selectDiscountedTotalPrice);
 
   return (
     <>
@@ -84,19 +88,19 @@ export default function CartProducts() {
               <div className="order-total-border">
                 <p className="subtotal ">
                   <span>Subtotal</span>
-                  <span>$ {(totalPrice - shipping).toFixed(2)}</span>
+                  <span>$ {subtotal.toFixed(2)}</span>
                 </p>
                 <p className="shipping shipping-line">
                   <span>Shipping</span>
                   <span>$ {shipping}</span>
                 </p>
                 <p className="tax tax-line">
-                  <span>Tax</span>
-                  <span>$ 0</span>
+                  <span>With discount:</span>
+                  <span>$ {discountedSubtotal.toFixed(2)}</span>
                 </p>
                 <p className="order-total-sum total-line">
                   <span>Order Total</span>
-                  <span>$ {totalPrice.toFixed(2)}</span>
+                  <span>$ {discountedTotalPrice.toFixed(2)}</span>
                 </p>
               </div>
             </div>

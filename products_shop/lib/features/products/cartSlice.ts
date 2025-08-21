@@ -7,7 +7,10 @@ export interface CartProduct extends IProducts {
 
 interface CartState {
   cart: CartProduct[];
+  subtotal: number;
+  discountedSubtotal: number;
   totalPrice: number;
+  discountedTotalPrice: number;
   shipping: number;
   shippingPriceTotal: number;
   togglePanel: boolean;
@@ -15,10 +18,30 @@ interface CartState {
 
 const initialState: CartState = {
   cart: [],
+  subtotal: 0,
+  discountedSubtotal: 0,
   totalPrice: 0,
+  discountedTotalPrice: 0,
   shipping: 10,
   shippingPriceTotal: 0,
   togglePanel: false,
+};
+const calculateTotals = (state: CartState) => {
+  state.subtotal = state.cart.reduce(
+    (acc, item) => acc + item.price * item.amount,
+    0
+  );
+
+  state.discountedSubtotal = state.cart.reduce((acc, item) => {
+    const discountedPrice =
+      item.price * (1 - item.discountPercentage / 100) * item.amount;
+    return acc + discountedPrice;
+  }, 0);
+
+  const shipping = state.cart.length > 0 ? state.shipping : 0;
+
+  state.totalPrice = state.subtotal + shipping;
+  state.discountedTotalPrice = state.discountedSubtotal + shipping;
 };
 const cartSlice = createSlice({
   name: "products",
@@ -30,7 +53,7 @@ const cartSlice = createSlice({
       );
       if (!isAddProduct) {
         state.cart.push({ ...action.payload, amount: 1 });
-        state.totalPrice += action.payload.price;
+        calculateTotals(state);
       }
     },
     amountToPriceProduct(
@@ -43,27 +66,13 @@ const cartSlice = createSlice({
       if (existingProduct) {
         existingProduct.amount = action.payload.amount;
       }
-
-      state.totalPrice = state.cart.reduce(
-        (acc, item) => acc + item.price * item.amount,
-        0
-      );
-      state.totalPrice = state.totalPrice + state.shipping;
+      calculateTotals(state);
     },
     removeOrder(state, action: PayloadAction<number>) {
-      const isProduct = state.cart.some(
-        (product) => product.id === action.payload
-      );
-      if (!isProduct) return;
-
       state.cart = state.cart.filter(
         (product) => product.id !== action.payload
       );
-      state.totalPrice = state.cart.reduce(
-        (acc, next) => acc + next.price * next.amount,
-        0
-      );
-      state.totalPrice = state.totalPrice + state.shipping;
+      calculateTotals(state);
     },
     togglePanel(state, action: PayloadAction<boolean>) {
       state.togglePanel = action.payload;
