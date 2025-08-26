@@ -5,7 +5,7 @@ import FormSubmit from "./form-submit";
 
 export default function PostForm({ action }) {
   const [state, formAction, isPending] = useActionState(action, {});
-
+  console.log(state.errors);
   return (
     <>
       <h1>Create a new post</h1>
