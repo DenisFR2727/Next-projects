@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 .filter_panel {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding-top: 50px;
   font-family: "Roboto", sans-serif;
@@ -52,6 +52,7 @@
     }
     .filter_buttons {
       display: flex;
+      flex-direction: column;
       gap: 15px;
 
       button {

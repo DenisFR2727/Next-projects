@@ -7,6 +7,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["filterReducer"],
 };
 
 const rootReducer = combineReducers({
@@ -20,11 +21,10 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // потрібно для redux-persist
+      serializableCheck: false,
     }),
 });
 
-// persistStore для провайдера PersistGate
 export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
