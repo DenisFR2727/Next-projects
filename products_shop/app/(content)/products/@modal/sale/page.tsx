@@ -1,35 +1,23 @@
 "use client";
-
 import { useRouter } from "next/navigation";
+
+import "./sale.scss";
+import Image from "next/image";
 
 export default function SaleModalPage() {
   const router = useRouter();
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.6)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 1000,
-      }}
-      onClick={() => router.back()} // клік по бекдропу закриває
-    >
-      <div
-        style={{
-          background: "white",
-          padding: "20px",
-          borderRadius: "12px",
-          minWidth: "300px",
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h2>🎉 Спеціальна знижка!</h2>
-        <p>-20% на всі товари тільки сьогодні 🚀</p>
-        <button onClick={() => router.back()}>Закрити</button>
+    <div className="sale_modal" onClick={() => router.back()}>
+      <div className="sale_modal-content" onClick={(e) => e.stopPropagation()}>
+        <img
+          className="sale_modal-img"
+          src="/sale-modal-image.jpg"
+          alt="image"
+        />
+        <button className="sale_modal-close" onClick={() => router.back()}>
+          Close
+        </button>
       </div>
     </div>
   );

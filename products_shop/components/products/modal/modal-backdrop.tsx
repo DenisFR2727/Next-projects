@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 
 import "@/styles/globals.css";
 
-interface ModalBackDropsProps {
+export interface ModalBackDropsProps {
   children: React.ReactNode;
 }
 
