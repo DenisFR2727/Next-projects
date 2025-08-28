@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 
 import "./sale.scss";
-import Image from "next/image";
 
 export default function SaleModalPage() {
   const router = useRouter();

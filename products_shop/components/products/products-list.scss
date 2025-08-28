@@ -44,6 +44,14 @@
     }
   }
 }
+@media (min-width: 1173px) {
+  .products-items {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
 @media (max-width: 1825px) {
   .products-items {
     .card-product {

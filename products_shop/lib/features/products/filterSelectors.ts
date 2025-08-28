@@ -1,4 +1,3 @@
-import { useAppSelector } from "@/lib/hooks";
 import { RootState } from "@/lib/store";
 
 export const serchProductsSelector = (state: RootState) =>
