@@ -8,7 +8,7 @@ export default function PaginationList({
   products,
 }: Omit<ProductListProps, "listRef">) {
   const listRef = useRef<HTMLUListElement>(null);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState(1);
   const itemsPerPage = 8;
 
   const totalPages = Math.max(1, Math.ceil(products.length / itemsPerPage));
@@ -26,9 +26,10 @@ export default function PaginationList({
   }, [products, totalPages, page]);
 
   useEffect(() => {
-    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (listRef.current) {
+      listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, [page]);
-
   return (
     <div>
       <ProductList listRef={listRef} products={currentProducts} />
