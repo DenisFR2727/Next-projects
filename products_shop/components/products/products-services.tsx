@@ -2,17 +2,27 @@
 
 import DinamicPanel from "./dinamic-panel/dinamic-panel";
 import FilterPanel from "./filter/filter-panel";
-import { ProductListProps } from "./products-list";
 import PaginationList from "./pagination/pagination ";
+import { ProductListProps } from "./products-list";
 import { useFilterProducts } from "./filter/hooks";
+import { useEffect, useRef } from "react";
+import { useAppSelector } from "@/lib/hooks";
 
-export default function ProductsServices({ products }: ProductListProps) {
+export default function ProductsServices({
+  products,
+}: Omit<ProductListProps, "listRef">) {
   const { filteredProducts } = useFilterProducts(products);
+  const page = useAppSelector((state) => state.paginationPage.page);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [page]);
 
   return (
-    <div className="products_list">
+    <div ref={listRef} className="products_list">
       <FilterPanel products={products} />
-      <DinamicPanel lengItems={filteredProducts} />
+      <DinamicPanel ref={listRef} lengItems={filteredProducts} />
       <PaginationList products={filteredProducts} />
     </div>
   );
