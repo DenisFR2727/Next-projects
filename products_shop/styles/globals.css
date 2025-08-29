@@ -18,6 +18,7 @@
   height: fit-content;
   border-radius: 5px;
   min-height: 92vh;
+  overflow: hidden;
 }
 #home-page {
   margin: 0 auto;

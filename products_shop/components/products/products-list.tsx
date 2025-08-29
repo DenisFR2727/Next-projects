@@ -8,14 +8,16 @@ export type ProductListProps = {
   products: IProducts[];
   listRef: React.RefObject<HTMLUListElement>;
 };
-export default function ProductList({ products, listRef }: ProductListProps) {
+export default function ProductList({
+  products,
+}: Omit<ProductListProps, "listRef">) {
   const isToggle = useAppSelector((state) => state.cartReducer.togglePanel);
 
   if (products.length === 0) {
     return <p>Not found Products!</p>;
   }
   return (
-    <ul ref={listRef} className={"products-items"}>
+    <ul className={"products-items"}>
       {products?.map((product) => (
         <ProductCard key={product.id} product={product} isToggle={isToggle} />
       ))}
