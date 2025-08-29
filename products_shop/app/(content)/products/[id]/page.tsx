@@ -4,10 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 import DeteilsNav from "@/components/products/deteils-nav";
+import AddToCart from "@/components/products/cart/cart-button-add";
 
 import "./details-product.scss";
-import Cart from "@/components/products/cart/cart-products-icon";
-import AddToCart from "@/components/products/cart/cart-button-add";
 
 type PropsId = {
   params: {

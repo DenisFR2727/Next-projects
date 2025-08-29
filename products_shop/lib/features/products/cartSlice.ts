@@ -26,7 +26,7 @@ const initialState: CartState = {
   shippingPriceTotal: 0,
   togglePanel: false,
 };
-const calculateTotals = (state: CartState) => {
+const calculateTotals = (state: CartState): void => {
   state.subtotal = state.cart.reduce(
     (acc, item) => acc + item.price * item.amount,
     0

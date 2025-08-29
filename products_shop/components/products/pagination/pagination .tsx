@@ -1,16 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo } from "react";
 import ProductList, { ProductListProps } from "../products-list";
-import "./pagination.scss";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { setPage } from "@/lib/features/products/paginationSlice";
+import { pageSelector } from "@/lib/selectors/paginationSelectors";
+
+import "./pagination.scss";
 
 export default function PaginationList({
   products,
 }: Omit<ProductListProps, "listRef">) {
   const dispatch = useAppDispatch();
-  const page = useAppSelector((state) => state.paginationPage.page);
+  const page = useAppSelector(pageSelector);
 
   const itemsPerPage = 8;
 

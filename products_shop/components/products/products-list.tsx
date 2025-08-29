@@ -1,7 +1,9 @@
 "use client";
-import { IProducts } from "@/lib/types";
 import ProductCard from "./product-card";
+import { IProducts } from "@/lib/types";
 import { useAppSelector } from "@/lib/hooks";
+import { isToggleSelector } from "@/lib/selectors/cartSelectors";
+
 import "./products-list.scss";
 
 export type ProductListProps = {
@@ -11,7 +13,7 @@ export type ProductListProps = {
 export default function ProductList({
   products,
 }: Omit<ProductListProps, "listRef">) {
-  const isToggle = useAppSelector((state) => state.cartReducer.togglePanel);
+  const isToggle = useAppSelector(isToggleSelector);
 
   if (products.length === 0) {
     return <p>Not found Products!</p>;

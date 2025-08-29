@@ -7,3 +7,6 @@ export const selectDiscountedTotalPrice = (state: RootState) =>
 export const selectDiscountedSubtotal = (state: RootState) =>
   state.cartReducer.discountedSubtotal;
 export const selectSubtotal = (state: RootState) => state.cartReducer.subtotal;
+
+export const isToggleSelector = (state: RootState) =>
+  state.cartReducer.togglePanel;

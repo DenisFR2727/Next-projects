@@ -9,7 +9,7 @@ import {
   selectedCategorySelector,
   selectedRangeSelector,
   serchProductsSelector,
-} from "@/lib/features/products/filterSelectors";
+} from "@/lib/selectors/filterSelectors";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useMemo, useState } from "react";
 import { IProducts } from "@/lib/types";

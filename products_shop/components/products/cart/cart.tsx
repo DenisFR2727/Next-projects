@@ -13,7 +13,7 @@ import {
   selectOrders,
   selectShipping,
   selectSubtotal,
-} from "@/lib/features/products/cartSelectors";
+} from "@/lib/selectors/cartSelectors";
 
 export default function CartProducts() {
   const dispatch = useAppDispatch();

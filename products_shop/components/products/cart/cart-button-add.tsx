@@ -3,6 +3,7 @@ import { addProductToCart } from "@/lib/features/products/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 import "./cart-button-add.scss";
+import { IProducts } from "@/lib/types";
 
 export default function AddToCart({ product }: any) {
   const dispatch = useAppDispatch();
