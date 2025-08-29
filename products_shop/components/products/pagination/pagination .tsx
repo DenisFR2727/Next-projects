@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import ProductList, { ProductListProps } from "../products-list";
 import "./pagination.scss";
 
-export default function PaginationList({ products }: ProductListProps) {
-  const [page, setPage] = useState(1);
+export default function PaginationList({
+  products,
+}: Omit<ProductListProps, "listRef">) {
+  const listRef = useRef<HTMLUListElement>(null);
+  const [page, setPage] = useState<number>(1);
   const itemsPerPage = 8;
 
   const totalPages = Math.max(1, Math.ceil(products.length / itemsPerPage));
@@ -22,9 +25,13 @@ export default function PaginationList({ products }: ProductListProps) {
     }
   }, [products, totalPages, page]);
 
+  useEffect(() => {
+    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [page]);
+
   return (
     <div>
-      <ProductList products={currentProducts} />
+      <ProductList listRef={listRef} products={currentProducts} />
       <div className="pagination_btn-list">
         <button
           disabled={page === 1}

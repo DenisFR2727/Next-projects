@@ -3,7 +3,9 @@ import { ProductListProps } from "../products-list";
 import { useFilterForm } from "./hooks";
 import "./filter-panel.scss";
 
-export default function FilterPanel({ products }: ProductListProps) {
+export default function FilterPanel({
+  products,
+}: Omit<ProductListProps, "listRef">) {
   const {
     searchTitle,
     selectedCategoryCurrent,
