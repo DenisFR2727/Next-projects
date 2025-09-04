@@ -5,7 +5,7 @@ import Cart from "./cart/cart-products-icon";
 
 import "./product-card.scss";
 
-type ProductCardProps = {
+export type ProductCardProps = {
   product: IProducts;
   isToggle: boolean;
 };

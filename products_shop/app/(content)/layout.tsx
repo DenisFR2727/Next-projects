@@ -5,6 +5,7 @@ import { ReduxProvider } from "../providers/redux-provider";
 import HeaderMain from "@/components/header/header-main";
 
 import "@/styles/globals.css";
+import Footer from "@/components/footer/footer-products";
 
 export const metadata: Metadata = {
   title: "Funny Shop",
@@ -25,6 +26,7 @@ export default function RootLayout({
               <HeaderMain />
             </div>
             <div id="page">{children}</div>
+            <Footer />
           </Providers>
         </ReduxProvider>
       </body>

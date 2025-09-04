@@ -1,5 +1,7 @@
 import Link from "next/link";
-import ProductCard from "@/components/products/product-card";
+import ProductCard, {
+  ProductCardProps,
+} from "@/components/products/product-card";
 
 import { notFound } from "next/navigation";
 import { getProducts } from "@/lib/products";
@@ -35,7 +37,7 @@ export default async function HomePage() {
         <h2>Featured products</h2>
         <div className="home_line"></div>
         <div className="home_products-marketing">
-          {featuredProducts?.map((product: any) => (
+          {featuredProducts?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
