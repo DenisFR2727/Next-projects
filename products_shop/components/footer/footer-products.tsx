@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import "./footer-products.scss";
-import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -39,7 +39,7 @@ const Footer = () => {
           <div className="line"></div>
           <div className="footer_bottom">
             <div className="create_name">
-              <div>© 2025 Harchev Denys | Coded with 💜</div>
+              <p>© 2025 Harchev Denys | Coded with 💜</p>
             </div>
             <ul className="footer_list-icons">
               <li>

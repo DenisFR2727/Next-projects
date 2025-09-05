@@ -1,13 +1,13 @@
 import Link from "next/link";
-import BackDropNav from "./nav-link-backdrop";
+import BackDropNav from "../products/nav-link-backdrop";
 
-import "./deteils-nav.scss";
+import "./details-nav.scss";
 
-export default function DeteilsNav() {
+export default function DetailsNav() {
   return (
-    <nav className="nav-deteils">
+    <nav className="nav-details">
       <ul>
-        <div className="deteils-link">
+        <div className="details-link">
           <li className="link-item-line">
             <Link href={`/`}>Home</Link>
           </li>

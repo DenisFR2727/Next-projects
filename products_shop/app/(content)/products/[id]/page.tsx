@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-import DeteilsNav from "@/components/products/deteils-nav";
+import DetailsNav from "@/components/details/details-nav";
 import AddToCart from "@/components/products/cart/cart-button-add";
 
 import "./details-product.scss";
@@ -28,9 +28,9 @@ export default async function DetailsProductPage({ params }: PropsId) {
 
   return (
     <div className="details_product">
-      <div className="deteils-content">
+      <div className="details-content">
         <div>
-          <DeteilsNav />
+          <DetailsNav />
           <Link href={`/products/${id}/image`}>
             <Image
               src={mainImage}
@@ -40,7 +40,7 @@ export default async function DetailsProductPage({ params }: PropsId) {
             />
           </Link>
         </div>
-        <div className="deteils-info">
+        <div className="details-info">
           <h2>{product.title}</h2>
           <p>
             Brand: <span>{product.brand}</span>

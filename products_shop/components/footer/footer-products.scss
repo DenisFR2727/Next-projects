@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 .container {
   margin: 0 auto;
   max-width: 100%;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
 
   .footer {
     background: #71717a;
@@ -72,6 +75,44 @@
           }
         }
       }
+    }
+  }
+}
+@media (max-width: 435px) {
+  .footer_list-links {
+    flex-direction: column;
+
+    .nav-item {
+      font-weight: 600;
+    }
+  }
+
+  .footer_bottom {
+    flex-direction: column;
+  }
+}
+@media (max-width: 376px) {
+  .footer_list-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+
+    .nav-item {
+      font-weight: 600;
+    }
+  }
+
+  .footer_bottom {
+    flex-direction: column;
+
+    .create_name {
+      text-align: center;
+    }
+    .footer_list-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-left: 0;
     }
   }
 }
