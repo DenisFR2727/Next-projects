@@ -1,3 +1,5 @@
+// Types Api
+
 interface Dimensions {
   width: number;
   height: number;
@@ -45,4 +47,33 @@ export interface IProductsResponse {
   total: number;
   skip: number;
   limit: number;
+}
+// --------------------------------------------
+// UnsPlash types
+
+export interface Urls {
+  raw: string;
+  full: string;
+  regular: string;
+  small: string;
+  thumb: string;
+  small_s3: string;
+}
+export interface Links {
+  self: string;
+  html: string;
+  download: string;
+  download_location: string;
+}
+export interface UnsPlash {
+  id: string;
+  slug: string;
+  created_at: string;
+  updated_at: string;
+  promoted_at: string;
+  width: number;
+  height: number;
+  alt_description: string;
+  urls: Urls;
+  links: Links;
 }

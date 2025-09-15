@@ -1,0 +1,60 @@
+/* masonry styles */
+.unsplash_list {
+  display: flex;
+  margin-left: -24px; /* відступ компенсує gutter */
+  width: auto;
+}
+
+.unsplash_column {
+  padding-left: 24px; /* gutter */
+  background-clip: padding-box;
+}
+
+.unsplash_column > li {
+  margin-bottom: 24px;
+  list-style: none;
+}
+// ----------------------------------
+.layout_hover-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.layout_hover-image img {
+  transition: 0.3s ease;
+}
+
+.layout_hover-image:hover img {
+  filter: brightness(70%); /* затемнення */
+}
+
+/* Overlay */
+.layout_hover-image .overlay {
+  position: absolute;
+  inset: 0; /* top, right, bottom, left = 0 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #fff;
+}
+
+.layout_hover-image:hover .overlay {
+  opacity: 1;
+}
+
+/* Кнопка */
+.overlay .download-btn {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.overlay .author {
+  font-size: 14px;
+  font-weight: 500;
+}

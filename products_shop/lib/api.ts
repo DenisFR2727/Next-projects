@@ -1,5 +1,7 @@
 "use server";
-import { IProducts } from "./types";
+import { IProducts, UnsPlash } from "./types";
+
+const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 export async function getProduct(id: number): Promise<IProducts | null> {
   const res = await fetch(`https://dummyjson.com/products/${id}`);
@@ -10,5 +12,13 @@ export async function getProduct(id: number): Promise<IProducts | null> {
 export async function getProducts(): Promise<{ products: IProducts[] }> {
   const res = await fetch(`https://dummyjson.com/products`);
   if (!res.ok) throw new Error("Failed to fetch products");
+  return res.json();
+}
+
+export async function getPhotos(): Promise<UnsPlash[]> {
+  const res = await fetch(
+    `https://api.unsplash.com/photos/?client_id=${UNSPLASH_ACCESS_KEY}`
+  );
+  if (!res.ok) throw new Error("Failed to fetch photos");
   return res.json();
 }

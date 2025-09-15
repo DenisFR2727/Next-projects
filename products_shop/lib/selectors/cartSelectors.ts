@@ -10,3 +10,5 @@ export const selectSubtotal = (state: RootState) => state.cartReducer.subtotal;
 
 export const isToggleSelector = (state: RootState) =>
   state.cartReducer.togglePanel;
+
+export const isCartItemsSelector = (state: RootState) => state.cartReducer.cart;

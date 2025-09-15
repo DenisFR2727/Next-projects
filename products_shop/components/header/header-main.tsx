@@ -18,12 +18,13 @@ import NavLink from "./nav-link";
 import { menuItems } from "@/lib/features/links";
 import { TiShoppingCart } from "react-icons/ti";
 import { useAppSelector } from "@/lib/hooks";
+import { isCartItemsSelector } from "@/lib/selectors/cartSelectors";
 
 import "./header-main.scss";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const isCartItems = useAppSelector((state) => state.cartReducer.cart);
+  const isCartItems = useAppSelector(isCartItemsSelector);
   const router = useRouter();
 
   return (
@@ -71,7 +72,7 @@ export default function HeaderMain() {
             <NavLink href="/products">Products</NavLink>
           </NavbarItem>
           <NavbarItem>
-            <NavLink href="/about">About</NavLink>
+            <NavLink href="/unsplash">Unsplash</NavLink>
           </NavbarItem>
           <NavbarItem>
             <NavLink href="/cart">Cart</NavLink>

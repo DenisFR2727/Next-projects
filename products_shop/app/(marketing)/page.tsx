@@ -4,7 +4,7 @@ import ProductCard, {
 } from "@/components/products/product-card";
 
 import { notFound } from "next/navigation";
-import { getProducts } from "@/lib/products";
+import { getProducts } from "@/lib/api";
 import SlideProducts from "@/components/products/slide/slide-products";
 
 import "./marketing.scss";
