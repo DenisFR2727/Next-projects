@@ -15,9 +15,9 @@ export async function getProducts(): Promise<{ products: IProducts[] }> {
   return res.json();
 }
 
-export async function getPhotos(): Promise<UnsPlash[]> {
+export async function getPhotos(page = 1, perPage = 9): Promise<UnsPlash[]> {
   const res = await fetch(
-    `https://api.unsplash.com/photos/?client_id=${UNSPLASH_ACCESS_KEY}`
+    `https://api.unsplash.com/photos/?client_id=${UNSPLASH_ACCESS_KEY}&page=${page}&per_page=${perPage}`
   );
   if (!res.ok) throw new Error("Failed to fetch photos");
   return res.json();

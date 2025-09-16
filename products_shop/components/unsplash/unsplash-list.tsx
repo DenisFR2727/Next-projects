@@ -1,17 +1,16 @@
-import { UnsPlash } from "@/lib/types";
+"use client";
 import Image from "next/image";
 import MasonryLayout from "./masonry-layout";
+import useUnsplashLoadingPage from "./hooks";
 
-interface PhotosProps {
-  photos: UnsPlash[];
-}
+export default function UnsplashList() {
+  const { photos, loaderRef, loading } = useUnsplashLoadingPage();
 
-export default async function UnsplashList({ photos }: PhotosProps) {
   return (
-    <>
+    <div>
       <MasonryLayout>
-        {photos.map((photo) => (
-          <li key={photo.id}>
+        {photos.map((photo, index) => (
+          <li key={`${photo.id}-${index}`}>
             <div className="layout_hover-image">
               <Image
                 src={photo.urls.small}
@@ -34,6 +33,9 @@ export default async function UnsplashList({ photos }: PhotosProps) {
           </li>
         ))}
       </MasonryLayout>
-    </>
+      <div ref={loaderRef} style={{ height: "50px" }}>
+        {loading && <p>Loading...</p>}
+      </div>
+    </div>
   );
 }

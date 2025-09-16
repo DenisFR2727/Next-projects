@@ -13,7 +13,7 @@ export default async function UnsPlashPage() {
   //   }, [page]);
   return (
     <>
-      <UnsplashList photos={photos} />
+      <UnsplashList />
     </>
   );
 }
