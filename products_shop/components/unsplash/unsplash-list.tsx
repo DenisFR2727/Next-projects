@@ -2,9 +2,10 @@
 import Image from "next/image";
 import MasonryLayout from "./masonry-layout";
 import useUnsplashLoadingPage from "./hooks";
+import SpinnerItem from "../spinners/spinner";
 
 export default function UnsplashList() {
-  const { photos, loaderRef, loading } = useUnsplashLoadingPage();
+  const { photos, srollTrigger, loading } = useUnsplashLoadingPage();
 
   return (
     <div>
@@ -26,15 +27,22 @@ export default function UnsplashList() {
                   rel="noopener noreferrer"
                   className="download-btn"
                 >
-                  ⬇ Download
+                  <img
+                    src="/arrow-down-svgrepo-com.svg"
+                    alt="arrow-down-svgrepo"
+                  />
                 </a>
               </div>
             </div>
           </li>
         ))}
       </MasonryLayout>
-      <div ref={loaderRef} style={{ height: "50px" }}>
-        {loading && <p>Loading...</p>}
+      <div ref={srollTrigger} style={{ height: "50px" }}>
+        {loading && (
+          <div>
+            <SpinnerItem />
+          </div>
+        )}
       </div>
     </div>
   );

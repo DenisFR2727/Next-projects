@@ -6,11 +6,6 @@ export default async function UnsPlashPage() {
   //   const page = useAppSelector(pageSelector);
   const photos = await getPhotos();
 
-  //   const listRef = useRef<HTMLDivElement>(null);
-
-  //   useEffect(() => {
-  //     listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  //   }, [page]);
   return (
     <>
       <UnsplashList />

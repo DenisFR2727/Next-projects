@@ -7,7 +7,7 @@ export default function useUnsplashLoadingPage() {
   const [photos, setPhotos] = useState<UnsPlash[]>([]);
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
-  const loaderRef = useRef<HTMLDivElement | null>(null);
+  const srollTrigger = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -35,20 +35,20 @@ export default function useUnsplashLoadingPage() {
         }
       },
       {
-        rootMargin: "900px",
+        rootMargin: "1500px",
       }
     );
 
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
+    if (srollTrigger.current) {
+      observer.observe(srollTrigger.current);
     }
 
     return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
+      if (srollTrigger.current) {
+        observer.unobserve(srollTrigger.current);
       }
     };
   }, [loading]);
 
-  return { photos, loaderRef, loading };
+  return { photos, srollTrigger, loading };
 }
