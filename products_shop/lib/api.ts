@@ -22,3 +22,12 @@ export async function getPhotos(page = 1, perPage = 9): Promise<UnsPlash[]> {
   if (!res.ok) throw new Error("Failed to fetch photos");
   return res.json();
 }
+export default async function getPhoto(slug: string): Promise<UnsPlash> {
+  const res = await fetch(
+    `https://api.unsplash.com/photos/${slug}?client_id=${UNSPLASH_ACCESS_KEY}`
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch photo!");
+  }
+  return res.json();
+}
