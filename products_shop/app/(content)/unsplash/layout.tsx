@@ -9,6 +9,7 @@ export default function RootLayout({
     <div>
       {children}
       {modal}
+      <div id="overlay-modal"></div>
     </div>
   );
 }

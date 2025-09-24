@@ -2,19 +2,21 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./features/products/cartSlice";
 import filterProductsSlice from "./features/products/filterProductsSlice";
 import paginationPage from "./features/products/paginationSlice";
+import unsplashPage from "./features/unsplash/unsplashSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["filterReducer", "paginationPage"],
+  blacklist: ["filterReducer", "paginationPage", "unsplashPage"],
 };
 
 const rootReducer = combineReducers({
   cartReducer: cartSlice,
   filterReducer: filterProductsSlice,
   paginationPage: paginationPage,
+  unsplashPage: unsplashPage,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,11 +1,16 @@
 "use client";
 import Image from "next/image";
-import MasonryLayout from "./masonry-layout";
-import useUnsplashLoadingPage from "./hooks";
-import SpinnerItem from "../spinners/spinner";
-import Link from "next/link";
+
+import MasonryLayout from "@/components/unsplash/masonry-layout";
+import useUnsplashLoadingPage from "@/components/unsplash/hooks";
+import SpinnerItem from "@/components/spinners/spinner";
+import { setSelectedPhoto } from "@/lib/features/unsplash/unsplashSlice";
+import { useAppDispatch } from "@/lib/hooks";
+import PhotoPageUnsplash from "@/app/(content)/unsplash/[slug]/@modal/(.)[slug]/image/page";
+import "@/styles/globals.css";
 
 export default function UnsplashList() {
+  const dispatch = useAppDispatch();
   const { photos, srollTrigger, loading } = useUnsplashLoadingPage();
 
   return (
@@ -13,34 +18,33 @@ export default function UnsplashList() {
       <MasonryLayout>
         {photos.map((photo, index) => (
           <li key={`${photo.id}-${index}`}>
-            <div className="layout_hover-image">
-              <Link href={`/unsplash/${photo.slug}/image`}>
-                <Image
-                  src={photo.urls.small}
-                  width={photo.width}
-                  height={photo.height}
-                  alt={photo.alt_description}
-                />
-                <div className="overlay">
-                  <span className="author">{photo.created_at}</span>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open(
-                        `${photo.links.download}?force=true`,
-                        "_blank"
-                      );
-                    }}
-                    rel="noopener noreferrer"
-                    className="download-btn"
-                  >
-                    <img
-                      src="/arrow-down-svgrepo-com.svg"
-                      alt="arrow-down-svgrepo"
-                    />
-                  </button>
-                </div>
-              </Link>
+            <div
+              className="layout_hover-image"
+              onClick={() => dispatch(setSelectedPhoto(photo))}
+            >
+              <Image
+                src={photo.urls.small}
+                width={photo.width}
+                height={photo.height}
+                alt={photo.alt_description}
+              />
+              <div className="overlay">
+                <span className="author">{photo.created_at}</span>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(`${photo.links.download}?force=true`, "_blank");
+                  }}
+                  rel="noopener noreferrer"
+                  className="download-btn"
+                >
+                  <img
+                    src="/arrow-down-svgrepo-com.svg"
+                    alt="arrow-down-svgrepo"
+                  />
+                </button>
+              </div>
             </div>
           </li>
         ))}
@@ -52,6 +56,7 @@ export default function UnsplashList() {
           </div>
         )}
       </div>
+      <PhotoPageUnsplash />
     </div>
   );
 }
