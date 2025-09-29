@@ -56,6 +56,9 @@
   background: #f6f6f6fa;
   border-radius: 5px;
   z-index: 9999;
+  cursor: pointer;
+  user-select: none;
+
   img {
     position: absolute;
     top: 50%;
@@ -63,4 +66,13 @@
     transform: translate(-50%, -50%);
     width: 20px;
   }
+}
+.form_like-image {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-width: 20px;
+  height: 20px;
+  right: 5px;
+  top: 2px;
 }

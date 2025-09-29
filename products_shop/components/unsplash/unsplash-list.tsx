@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-
 import MasonryLayout from "@/components/unsplash/masonry-layout";
 import useUnsplashLoadingPage from "@/components/unsplash/hooks";
 import SpinnerItem from "@/components/spinners/spinner";
 import { setSelectedPhoto } from "@/lib/features/unsplash/unsplashSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import PhotoPageUnsplash from "@/app/(content)/unsplash/[slug]/@modal/(.)[slug]/image/page";
+import LikeButton from "./like/like-icon";
+
 import "@/styles/globals.css";
 
 export default function UnsplashList() {
@@ -22,6 +23,15 @@ export default function UnsplashList() {
               className="layout_hover-image"
               onClick={() => dispatch(setSelectedPhoto(photo))}
             >
+              <form
+                action={""}
+                className="form_like-image"
+                onClick={(e) => {
+                  e.preventDefault(), e.stopPropagation();
+                }}
+              >
+                <LikeButton />
+              </form>
               <Image
                 src={photo.urls.small}
                 width={photo.width}
