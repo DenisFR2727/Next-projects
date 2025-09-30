@@ -1,8 +1,8 @@
 import sql from "better-sqlite3";
 const db = new sql("posts.db");
 
-export async function updatePostLikeStatus(postId, userId) {
-  const stmt = db.prepare(`
+export async function updatePostLikeStatus(postId: any, userId: any) {
+  const stmt: any = db.prepare(`
     SELECT COUNT(*) AS count
     FROM likes
     WHERE user_id = ? AND post_id = ?`);
