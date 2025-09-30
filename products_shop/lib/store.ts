@@ -9,7 +9,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["filterReducer", "paginationPage", "unsplashPage"],
+  blacklist: ["filterReducer", "paginationPage"],
 };
 
 const rootReducer = combineReducers({
