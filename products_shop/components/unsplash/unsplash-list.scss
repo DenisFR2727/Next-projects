@@ -32,7 +32,7 @@
 /* Overlay */
 .layout_hover-image .overlay {
   position: absolute;
-  inset: 0; /* top, right, bottom, left = 0 */
+  inset: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -46,8 +46,7 @@
   opacity: 1;
 }
 
-/* Кнопка */
-
+/* button */
 .download-btn {
   position: relative;
   display: flex;
@@ -74,7 +73,7 @@
   max-width: 20px;
   height: 20px;
   right: 5px;
-  top: 2px;
+  top: 5px;
 }
 .layout_hover-image .form_like-image {
   opacity: 0;

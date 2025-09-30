@@ -3,17 +3,25 @@ import Image from "next/image";
 import MasonryLayout from "@/components/unsplash/masonry-layout";
 import useUnsplashLoadingPage from "@/components/unsplash/hooks";
 import SpinnerItem from "@/components/spinners/spinner";
-import { setSelectedPhoto } from "@/lib/features/unsplash/unsplashSlice";
-import { useAppDispatch } from "@/lib/hooks";
+import {
+  setIdPhotoToggle,
+  setSelectedPhoto,
+} from "@/lib/features/unsplash/unsplashSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import PhotoPageUnsplash from "@/app/(content)/unsplash/[slug]/@modal/(.)[slug]/image/page";
 import LikeButton from "./like/like-icon";
+// import { togglePhotosLikeStatus } from "@/actions/photos";
 
 import "@/styles/globals.css";
 
 export default function UnsplashList() {
   const dispatch = useAppDispatch();
+  const isLike = useAppSelector((state) => state.unsplashPage.idPhotoData);
   const { photos, srollTrigger, loading } = useUnsplashLoadingPage();
 
+  function isLikeInArrayIdPhotos(idPhoto: string) {
+    return isLike.some((item) => item === idPhoto);
+  }
   return (
     <div>
       <MasonryLayout>
@@ -24,9 +32,9 @@ export default function UnsplashList() {
               onClick={() => dispatch(setSelectedPhoto(photo))}
             >
               <form
-                action={""}
-                className="form_like-image"
+                className={`form_like-image ${isLikeInArrayIdPhotos(photo.id) ? "liked" : ""}`}
                 onClick={(e) => {
+                  dispatch(setIdPhotoToggle(photo.id));
                   e.preventDefault(), e.stopPropagation();
                 }}
               >

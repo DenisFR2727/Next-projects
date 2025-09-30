@@ -17,11 +17,13 @@
   border: 1px solid white;
   border-radius: 5px;
   background: white;
+  opacity: 0.8;
 }
 
 .like-button:hover svg,
 .liked .like-button svg {
   fill: #e32195;
+  opacity: 1;
 }
 
 .liked .like-button:hover svg {
