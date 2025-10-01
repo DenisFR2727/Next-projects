@@ -10,13 +10,13 @@ import {
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import PhotoPageUnsplash from "@/app/(content)/unsplash/[slug]/@modal/(.)[slug]/image/page";
 import LikeButton from "./like/like-icon";
-// import { togglePhotosLikeStatus } from "@/actions/photos";
+import { isLikeSelector } from "@/lib/selectors/unsplashSelectors";
 
 import "@/styles/globals.css";
 
 export default function UnsplashList() {
   const dispatch = useAppDispatch();
-  const isLike = useAppSelector((state) => state.unsplashPage.idPhotoData);
+  const isLike = useAppSelector(isLikeSelector);
   const { photos, srollTrigger, loading } = useUnsplashLoadingPage();
 
   function isLikeInArrayIdPhotos(idPhoto: string) {
