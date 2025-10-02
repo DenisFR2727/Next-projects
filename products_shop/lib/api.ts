@@ -4,9 +4,7 @@ import { IProducts, UnsPlash } from "./types";
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 export async function getProduct(id: number): Promise<IProducts | null> {
-  const res = await fetch(`https://dummyjson.com/products/${id}`, {
-    cache: "force-cache",
-  });
+  const res = await fetch(`https://dummyjson.com/products/${id}`);
   if (!res.ok) return null;
   return res.json();
 }
