@@ -10,13 +10,13 @@ import "./details-product.scss";
 
 type PropsId = {
   params: {
-    id: number;
+    id: string;
   };
 };
 
 export default async function DetailsProductPage({ params }: PropsId) {
   const { id } = await params;
-  const product = await getProduct(id);
+  const product = await getProduct(+id);
   const mainImage =
     Array.isArray(product?.images) && product.images.length
       ? product.images[0]

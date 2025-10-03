@@ -10,7 +10,11 @@ export async function getProduct(id: number): Promise<IProducts | null> {
 }
 
 export async function getProducts(): Promise<{ products: IProducts[] }> {
-  const res = await fetch(`https://dummyjson.com/products`);
+  const res = await fetch(`https://dummyjson.com/products`, {
+    next: {
+      revalidate: 10,
+    },
+  });
   if (!res.ok) throw new Error("Failed to fetch products");
   return res.json();
 }

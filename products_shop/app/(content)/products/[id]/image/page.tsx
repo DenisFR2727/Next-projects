@@ -6,13 +6,13 @@ import "@/styles/globals.css";
 
 type Props = {
   params: {
-    id: number;
+    id: string;
   };
 };
 
 export default async function PhotoPage({ params }: Props) {
   const { id } = await params;
-  const photo = await getProduct(id);
+  const photo = await getProduct(+id);
 
   if (!photo) {
     notFound();

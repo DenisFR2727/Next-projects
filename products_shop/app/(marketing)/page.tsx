@@ -1,7 +1,5 @@
 import Link from "next/link";
-import ProductCard, {
-  ProductCardProps,
-} from "@/components/products/product-card";
+import ProductCard from "@/components/products/product-card";
 
 import { notFound } from "next/navigation";
 import { getProducts } from "@/lib/api";
@@ -11,6 +9,8 @@ import "./marketing.scss";
 export default async function HomePage() {
   const response = await getProducts();
   const data = response.products;
+
+  const isToggle: boolean = true;
 
   const featuredProducts = data.slice(1, 4);
 
@@ -38,7 +38,11 @@ export default async function HomePage() {
         <div className="home_line"></div>
         <div className="home_products-marketing">
           {featuredProducts?.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              isToggle={isToggle}
+            />
           ))}
         </div>
       </div>
