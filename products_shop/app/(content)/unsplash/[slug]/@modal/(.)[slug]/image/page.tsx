@@ -29,7 +29,11 @@ export default function PhotoPageUnsplash() {
           alt={selectedPhoto.alt_description || "photo"}
           width={500}
           height={500}
-          priority
+          unoptimized
+          style={{
+            objectFit: "contain",
+            transition: "opacity 0.4s ease",
+          }}
         />
       </div>
     </ModalPortalUnspalsh>
