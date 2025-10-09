@@ -1,16 +1,13 @@
 import { getProduct } from "@/lib/api";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { PropsId } from "../page";
 
 import "@/styles/globals.css";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
+export const dynamic = "force-static";
 
-export default async function PhotoPage({ params }: Props) {
+export default async function PhotoPage({ params }: PropsId) {
   const { id } = await params;
   const photo = await getProduct(+id);
 

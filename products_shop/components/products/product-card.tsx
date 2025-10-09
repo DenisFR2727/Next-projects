@@ -13,7 +13,7 @@ export type ProductCardProps = {
 export default function ProductCard({ product, isToggle }: ProductCardProps) {
   return (
     <div className={!isToggle ? "card-product" : "card-product-list"}>
-      <Link href={`/products/${product.id}`}>
+      <Link href={`/products/${product.id}`} prefetch={false}>
         <Image
           className="card-product-img"
           src={product.thumbnail}

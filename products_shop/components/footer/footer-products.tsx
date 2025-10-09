@@ -28,9 +28,9 @@ const Footer = () => {
               <Link href={"/cart"}>Cart</Link>
             </li>
             <li className="nav-item">
-              <a href="#" className="">
+              <Link href="#" className="">
                 FAQs
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link href={"/about"}> About</Link>

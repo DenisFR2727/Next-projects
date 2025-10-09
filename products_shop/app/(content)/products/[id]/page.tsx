@@ -8,10 +8,12 @@ import AddToCart from "@/components/products/cart/cart-button-add";
 
 import "./details-product.scss";
 
-type PropsId = {
-  params: {
+export const dynamic = "force-static";
+
+export type PropsId = {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 export default async function DetailsProductPage({ params }: PropsId) {
@@ -22,6 +24,7 @@ export default async function DetailsProductPage({ params }: PropsId) {
       ? product.images[0]
       : "/fallback.jpg";
 
+  console.log("Product Fetch id Done!");
   if (!product) {
     notFound();
   }

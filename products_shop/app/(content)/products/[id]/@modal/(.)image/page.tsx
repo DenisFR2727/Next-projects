@@ -1,19 +1,18 @@
 import { getProduct } from "@/lib/api";
 import { notFound } from "next/navigation";
-
-import "@/styles/globals.css";
 import ModalBackdrop from "@/components/products/modal/modal-backdrop";
 import Image from "next/image";
+import { PropsId } from "../../page";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
+import "@/styles/globals.css";
 
-export default async function PhotoPage({ params }: Props) {
+export const dynamic = "force-static";
+
+export default async function PhotoPage({ params }: PropsId) {
   const { id } = await params;
   const photo = await getProduct(+id);
+
+  console.log("Photo id done load!");
 
   if (!photo) {
     notFound();
