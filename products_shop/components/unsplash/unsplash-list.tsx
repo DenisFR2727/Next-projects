@@ -20,7 +20,7 @@ export default function UnsplashList() {
   const { photos, srollTrigger, loading } = useUnsplashLoadingPage();
 
   function isLikeInArrayIdPhotos(idPhoto: string) {
-    return isLike.some((item) => item === idPhoto);
+    return isLike.some((item: any) => item === idPhoto);
   }
   return (
     <div>
