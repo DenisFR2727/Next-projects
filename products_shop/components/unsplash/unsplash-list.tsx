@@ -9,9 +9,10 @@ import PhotoPageUnsplash from "@/app/(content)/unsplash/[slug]/@modal/(.)[slug]/
 import { isLikeSelector } from "@/lib/selectors/unsplashSelectors";
 import OverlayImage from "./overlay/overlay-image";
 import { useWindowSize } from "@react-hook/window-size";
+import { ScrollToTopButton } from "./scroll/scroll-to-top";
 
 import "@/styles/globals.css";
-import { ScrollToTopButton } from "./scroll/scroll-to-top";
+
 export interface WindowSize {
   width: number;
 }
@@ -28,8 +29,8 @@ export default function UnsplashList() {
   return (
     <div>
       <MasonryLayout>
-        {photos.map((photo, index) => (
-          <li key={`${photo.id}-${index}`}>
+        {photos.map((photo) => (
+          <li key={photo.id}>
             <div
               className="layout_hover-image"
               onClick={() => dispatch(setSelectedPhoto(photo))}

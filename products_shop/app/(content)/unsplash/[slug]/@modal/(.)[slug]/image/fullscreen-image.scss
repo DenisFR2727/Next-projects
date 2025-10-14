@@ -1,0 +1,20 @@
+.fullscreen-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  a {
+    display: flex;
+    justify-content: flex-end;
+
+    .fullscreen-image_download {
+      margin-top: 5px;
+      padding: 5px;
+      border-radius: 4px;
+      background-color: #f4f4f5;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+    }
+  }
+}

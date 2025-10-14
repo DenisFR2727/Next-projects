@@ -4,8 +4,10 @@ import ModalPortalUnspalsh from "@/components/unsplash/modal/modal-unsplash";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { setSelectedPhoto } from "@/lib/features/unsplash/unsplashSlice";
 import { selectedPhotoSelector } from "@/lib/selectors/unsplashSelectors";
+import { DownloadImage } from "@/components/unsplash/overlay/download-image";
 
 import "@/styles/globals.css";
+import "./fullscreen-image.scss";
 
 export default function PhotoPageUnsplash() {
   const dispatch = useAppDispatch();
@@ -35,6 +37,12 @@ export default function PhotoPageUnsplash() {
             transition: "opacity 0.4s ease",
           }}
         />
+        <DownloadImage
+          url={selectedPhoto?.links.download ?? ""}
+          fileName={`${selectedPhoto?.id}.jpg`}
+        >
+          <button className="fullscreen-image_download">Download</button>
+        </DownloadImage>
       </div>
     </ModalPortalUnspalsh>
   );

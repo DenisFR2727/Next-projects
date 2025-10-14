@@ -1,25 +1,28 @@
 "use client";
 import { setIdPhotoToggle } from "@/lib/features/unsplash/unsplashSlice";
 import { useAppDispatch } from "@/lib/hooks";
-import LikeButton from "../like/like-icon";
 import { UnsPlash } from "@/lib/types";
+import { DownloadImage } from "./download-image";
+import LikeButton from "../like/like-icon";
 
-interface OverlayImageProps {
-  isLikeInArrayIdPhotos: (id: string) => boolean;
-  photo: UnsPlash;
-  isMobile: boolean;
+export interface OverlayImageProps {
+  isLikeInArrayIdPhotos?: (id: string) => boolean;
+  photo?: UnsPlash;
+  isMobile?: boolean;
 }
 
 export default function OverlayImage({
-  isLikeInArrayIdPhotos,
+  isLikeInArrayIdPhotos = () => false,
   photo,
-  isMobile,
+  isMobile = false,
 }: OverlayImageProps) {
   const dispatch = useAppDispatch();
 
+  if (!photo) return null;
+
   return (
     <div className="overlay overlay-mobile">
-      <form
+      <div
         className={`form_like-image form_like-image-mobile ${isLikeInArrayIdPhotos(photo.id) ? "liked" : ""}`}
         onClick={(e) => {
           dispatch(setIdPhotoToggle(photo.id));
@@ -27,30 +30,27 @@ export default function OverlayImage({
         }}
       >
         <LikeButton />
-      </form>
+      </div>
       <span className="author author-mobile">{photo.created_at}</span>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          window.open(`${photo.links.download}?force=true`, "_blank");
-        }}
-        rel="noopener noreferrer"
-        className="download-btn"
+      <DownloadImage
+        url={photo?.links.download ?? ""}
+        fileName={`${photo?.id}.jpg`}
       >
-        {isMobile ? (
-          <span className="download-btn-mobile">
-            <span className="download-btn-text">Download</span>
-            <img
-              className="download-btn-arrow"
-              src="/arrow-down-svgrepo-com.svg"
-              alt="arrow-down-svgrepo"
-            />
-          </span>
-        ) : (
-          <img src="/arrow-down-svgrepo-com.svg" alt="arrow-down-svgrepo" />
-        )}
-      </button>
+        <button rel="noopener noreferrer" className="download-btn">
+          {isMobile ? (
+            <span className="download-btn-mobile">
+              <span className="download-btn-text">Download</span>
+              <img
+                className="download-btn-arrow"
+                src="/arrow-down-svgrepo-com.svg"
+                alt="arrow-down-svgrepo"
+              />
+            </span>
+          ) : (
+            <img src="/arrow-down-svgrepo-com.svg" alt="arrow-down-svgrepo" />
+          )}
+        </button>
+      </DownloadImage>
     </div>
   );
 }
