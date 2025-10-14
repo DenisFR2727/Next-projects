@@ -19,6 +19,7 @@
 .layout_hover-image {
   position: relative;
   overflow: hidden;
+  cursor: zoom-in;
 }
 
 .layout_hover-image img {
@@ -100,7 +101,7 @@
     display: none;
   }
 }
-@media (max-width: 460px) {
+@media (max-width: 768px) {
   .layout_hover-image {
     .overlay-mobile {
       display: none;

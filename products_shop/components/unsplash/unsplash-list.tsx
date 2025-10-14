@@ -11,6 +11,7 @@ import OverlayImage from "./overlay/overlay-image";
 import { useWindowSize } from "@react-hook/window-size";
 
 import "@/styles/globals.css";
+import { ScrollToTopButton } from "./scroll/scroll-to-top";
 export interface WindowSize {
   width: number;
 }
@@ -19,7 +20,7 @@ export default function UnsplashList() {
   const isLike = useAppSelector(isLikeSelector);
   const { photos, srollTrigger, loading } = useUnsplashLoadingPage();
   const [width] = useWindowSize();
-  const isMobile = width < 460;
+  const isMobile = width < 768;
 
   function isLikeInArrayIdPhotos(idPhoto: string) {
     return isLike.some((item: any) => item === idPhoto);
@@ -34,10 +35,11 @@ export default function UnsplashList() {
               onClick={() => dispatch(setSelectedPhoto(photo))}
             >
               <Image
-                src={photo.urls.small}
+                src={photo.urls.full}
                 width={photo.width}
                 height={photo.height}
                 alt={photo.alt_description}
+                style={{ backgroundSize: "cover" }}
               />
               <div
                 className={isMobile ? "layout_hover-image-mobile" : "overlay"}
@@ -60,6 +62,7 @@ export default function UnsplashList() {
         )}
       </div>
       <PhotoPageUnsplash />
+      <ScrollToTopButton />
     </div>
   );
 }
