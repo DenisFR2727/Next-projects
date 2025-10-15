@@ -37,10 +37,28 @@ export default function PhotoPageUnsplash() {
             transition: "opacity 0.4s ease",
           }}
         />
+
         <DownloadImage
           url={selectedPhoto?.links.download ?? ""}
           fileName={`${selectedPhoto?.id}.jpg`}
         >
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <p className="user_profile-unspalsh">
+              <span className="user_profile-text">
+                {selectedPhoto.user.social.instagram_username}
+              </span>
+              <img
+                width={20}
+                height={20}
+                src={selectedPhoto.user.profile_image.small}
+                alt={selectedPhoto.alt_description}
+              />
+            </p>
+          </div>
           <button className="fullscreen-image_download">Download</button>
         </DownloadImage>
       </div>

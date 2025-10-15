@@ -65,6 +65,17 @@ export interface Links {
   download: string;
   download_location: string;
 }
+export interface Profile_image {
+  small: string;
+  medium: string;
+  large: string;
+}
+export interface Social {
+  instagram_username: string;
+  portfolio_url: string;
+  twitter_username?: string | null;
+  paypal_email?: string | null;
+}
 export interface UnsPlash {
   id: string;
   slug: string;
@@ -76,4 +87,8 @@ export interface UnsPlash {
   alt_description: string;
   urls: Urls;
   links: Links;
+  user: {
+    profile_image: Profile_image;
+    social: Social;
+  };
 }
