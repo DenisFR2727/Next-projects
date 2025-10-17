@@ -20,6 +20,7 @@ export default function PhotoPageUnsplash() {
   return (
     <ModalPortalUnspalsh>
       <button
+        type="button"
         className="close-btn"
         onClick={() => dispatch(setSelectedPhoto(null))}
       >
@@ -46,6 +47,9 @@ export default function PhotoPageUnsplash() {
             onClick={(e) => {
               e.preventDefault();
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") e.preventDefault();
+            }}
           >
             <p className="user_profile-unspalsh">
               <span className="user_profile-text">
@@ -55,11 +59,17 @@ export default function PhotoPageUnsplash() {
                 width={20}
                 height={20}
                 src={selectedPhoto.user.profile_image.small}
-                alt={selectedPhoto.alt_description}
+                alt={selectedPhoto.alt_description || "Profile image"}
               />
             </p>
           </div>
-          <button className="fullscreen-image_download">Download</button>
+          <button
+            type="button"
+            className="fullscreen-image_download"
+            aria-label="Download image"
+          >
+            Download
+          </button>
         </DownloadImage>
       </div>
     </ModalPortalUnspalsh>
