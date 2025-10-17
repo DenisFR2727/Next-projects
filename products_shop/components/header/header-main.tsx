@@ -59,9 +59,10 @@ export default function HeaderMain() {
               <Image
                 style={{ maxWidth: "30px !important" }}
                 src="/favicon.png"
-                alt=""
+                alt="logo funny shop!"
                 width={30}
                 height={30}
+                priority
               />
             </Link>
           </NavbarBrand>

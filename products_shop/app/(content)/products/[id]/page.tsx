@@ -24,7 +24,6 @@ export default async function DetailsProductPage({ params }: PropsId) {
       ? product.images[0]
       : "/fallback.jpg";
 
-  console.log("Product Fetch id Done!");
   if (!product) {
     notFound();
   }
