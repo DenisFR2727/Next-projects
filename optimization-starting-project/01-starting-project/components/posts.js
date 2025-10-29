@@ -16,7 +16,6 @@ import "../app/globals.css";
 //  quality={50} - значення якості зображення!
 
 // функція для встановлення якості зображення та ширини в саму строку cloudinary з бекенда для оптимізації зображення !
-
 function imageLoader(config) {
   const urlStart = config.src.split("upload/")[0];
   const urlEnd = config.src.split("upload/")[1];
