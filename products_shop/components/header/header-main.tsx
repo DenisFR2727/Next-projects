@@ -1,34 +1,32 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
   Button,
-  NavbarMenu,
-  NavbarMenuItem,
-  Link as HeroLink,
   NavbarMenuToggle,
 } from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
-import { menuItems } from "@/lib/features/links";
 import { TiShoppingCart } from "react-icons/ti";
 import { useAppSelector } from "@/lib/hooks";
 import { isCartItemsSelector } from "@/lib/selectors/cartSelectors";
+import { ThemeContext } from "@/context/themeContext";
+import NavBarMobile from "./navbar-mobile";
 
 import "./header-main.scss";
 
 export default function HeaderMain() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const isCartItems = useAppSelector(isCartItemsSelector);
-  const router = useRouter();
 
   return (
-    <header>
+    <header className={`${theme}`}>
       <Navbar
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
@@ -57,7 +55,7 @@ export default function HeaderMain() {
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
               <Image
-                style={{ maxWidth: "30px !important" }}
+                className="logo_funny-shop"
                 src="/favicon.png"
                 alt="logo funny shop!"
                 width={30}
@@ -94,6 +92,23 @@ export default function HeaderMain() {
               </div>
             </Link>
           </NavbarItem>
+          <NavbarItem className="lg:flex">
+            <span className="header_login-nav" onClick={toggleTheme}>
+              {theme === "light_theme" ? (
+                <img
+                  style={{ maxWidth: "30px" }}
+                  src="theme/themes-light.png.png"
+                  alt="theme-light"
+                />
+              ) : (
+                <img
+                  style={{ maxWidth: "30px" }}
+                  src="theme/themes-black.png.png"
+                  alt="theme-black"
+                />
+              )}
+            </span>
+          </NavbarItem>
           <NavbarItem className="lg:flex login-nav">
             <Link href="#">
               <span className="header_login-nav">Login</span>
@@ -111,33 +126,8 @@ export default function HeaderMain() {
             </Button>
           </NavbarItem>
         </NavbarContent>
-
         {/* Mobile menu */}
-        <NavbarMenu
-          className={`z-30 ${isMenuOpen ? "menuOpen" : "menuClose"}`}
-          onClick={router.refresh}
-        >
-          {menuItems.map((item, index) => (
-            <NavbarMenuItem
-              key={index}
-              onClick={() => {
-                setIsMenuOpen(false);
-                router.push(item.href);
-              }}
-            >
-              <HeroLink
-                href={item.href}
-                className="w-full link-underline"
-                color={item.label === "Sign Up" ? "primary" : "foreground"}
-                size="lg"
-                as={Link}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </HeroLink>
-            </NavbarMenuItem>
-          ))}
-        </NavbarMenu>
+        <NavBarMobile isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </Navbar>
     </header>
   );

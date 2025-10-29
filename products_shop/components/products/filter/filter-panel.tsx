@@ -1,6 +1,9 @@
 "use client";
 import { ProductListProps } from "../products-list";
 import { useFilterForm } from "./hooks";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/themeContext";
+
 import "./filter-panel.scss";
 
 export default function FilterPanel({
@@ -16,7 +19,7 @@ export default function FilterPanel({
     submitSearch,
     resetValuesForm,
   } = useFilterForm();
-
+  const { themeFilterBtn } = useContext(ThemeContext);
   const categories = products.map((p) => p.category);
   const uniqCategories = [...new Set(categories)];
 
@@ -24,8 +27,9 @@ export default function FilterPanel({
     <div className="filter_panel">
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="search_product">
-          <label htmlFor="">Serch Product</label>
+          <label htmlFor="search_product">Serch Product</label>
           <input
+            id="search_product"
             className="search_item-input"
             type="text"
             value={searchTitle}
@@ -33,8 +37,9 @@ export default function FilterPanel({
           />
         </div>
         <div className="select_category">
-          <label>Select category</label>
+          <label htmlFor="select_category">Select category</label>
           <select
+            id="select_category"
             className="select_item-category"
             value={selectedCategoryCurrent}
             onChange={(e) => setSelectedCategoriesCurrent(e.target.value)}
@@ -49,10 +54,11 @@ export default function FilterPanel({
         </div>
         <div className="select_price">
           <div className="select_price-value">
-            <label htmlFor="">Select price</label>
+            <label htmlFor="range_price">Select price</label>
             <p>${defaultRange}</p>
           </div>
           <input
+            id="range_price"
             className="range_price"
             type="range"
             max={3000}
@@ -61,10 +67,16 @@ export default function FilterPanel({
           />
         </div>
         <div className="filter_buttons">
-          <button className="search_btn-filter" onClick={submitSearch}>
+          <button
+            className={`${themeFilterBtn} search_btn-filter`}
+            onClick={submitSearch}
+          >
             SEARCH
           </button>
-          <button className="reset_btn-filter" onClick={resetValuesForm}>
+          <button
+            className={`${themeFilterBtn} reset_btn-filter`}
+            onClick={resetValuesForm}
+          >
             RESET
           </button>
         </div>

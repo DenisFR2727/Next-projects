@@ -85,6 +85,17 @@
   margin: 0 auto;
   cursor: pointer;
 }
+
+.light_theme {
+  background-color: #ecedee !important;
+  color: #000 !important;
+}
+
+.dark_theme {
+  background-color: #3f3f46 !important;
+  color: #f5a524 !important;
+}
+
 @media (max-width: 520px) {
   body {
     padding: 0;
