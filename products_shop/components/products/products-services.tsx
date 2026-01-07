@@ -5,19 +5,23 @@ import FilterPanel from "./filter/filter-panel";
 import PaginationList from "./pagination/pagination ";
 import { ProductListProps } from "./products-list";
 import { useFilterProducts } from "./filter/hooks";
-import { useContext, useEffect, useRef } from "react";
+import { memo, useContext, useEffect, useRef } from "react";
 import { useAppSelector } from "@/lib/hooks";
 import { pageSelector } from "@/lib/selectors/paginationSelectors";
 import { ThemeContext } from "@/context/themeContext";
 
 import "@/styles/globals.css";
+import { log } from "@/lib/log";
+import ProgressHandler from "./modal/progress/ProgressHandler";
 
-export default function ProductsServices({
-  products,
+const ProductsServices = memo(function ({
+  products: allProducts,
 }: Omit<ProductListProps, "listRef">) {
-  const { filteredProducts } = useFilterProducts(products);
-  const page = useAppSelector(pageSelector);
+  log("<ProductsServices /> rendered", 1);
+  const { filteredProducts } = useFilterProducts(allProducts);
   const { theme } = useContext(ThemeContext);
+
+  const page = useAppSelector(pageSelector);
 
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -27,9 +31,11 @@ export default function ProductsServices({
 
   return (
     <div ref={listRef} className={`products_list ${theme}`}>
-      <FilterPanel products={products} />
+      <ProgressHandler />
+      <FilterPanel products={allProducts} />
       <DinamicPanel ref={listRef} lengItems={filteredProducts} />
       <PaginationList products={filteredProducts} />
     </div>
   );
-}
+});
+export default ProductsServices;

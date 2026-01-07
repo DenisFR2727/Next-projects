@@ -1,0 +1,185 @@
+.shipping {
+  max-width: 600px;
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px -2px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 0px 6px 15px -2px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px 6px 15px -2px rgba(0, 0, 0, 0.8);
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .title_name {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+    }
+    .shipping_email {
+      input {
+        width: 250px;
+      }
+    }
+    .shipping_phone {
+      input {
+        width: 250px;
+      }
+    }
+  }
+}
+
+.shipping_title,
+.shipping_name,
+.shipping_last_name,
+.shipping_address,
+.shipping_email,
+.shipping_phone {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    display: flex;
+    color: grey;
+  }
+  input {
+    border: 1px solid black;
+    padding-left: 10px;
+    border-radius: 5px;
+  }
+}
+.shipping_contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .shipping_contact_information {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+}
+
+.shipping_title {
+  max-width: 150px;
+}
+.shipping_name {
+  width: 210px;
+}
+.shipping_last_name {
+  width: 210px;
+}
+.shipping_country {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .shipping_country_item,
+  .shipping_zip_item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    label {
+      color: grey;
+    }
+    input {
+      width: 250px;
+      border: 1px solid black;
+      padding-left: 10px;
+      border-radius: 5px;
+    }
+  }
+}
+@media (max-width: 1010px) {
+  .shipping {
+    display: flex;
+    flex-direction: column;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .title_name {
+        flex-direction: column;
+        width: 100%;
+      }
+      .shipping_title,
+      .shipping_name,
+      .shipping_last_name,
+      .shipping_address,
+      .shipping_email,
+      .shipping_phone {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+      .shipping_contact_information {
+        flex-direction: column;
+      }
+    }
+  }
+}
+.select {
+  width: 118px;
+  border-bottom: 1px solid grey;
+  border-radius: 5px;
+}
+.selectContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 592px) {
+  form {
+    .shipping_country {
+      display: flex;
+      width: 100%;
+      .shipping_country_item {
+        display: flex;
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+      .shipping_zip_item {
+        display: flex;
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .shipping_title {
+    max-width: 100%;
+  }
+}
+.confirm {
+  cursor: pointer;
+  user-select: none;
+}
+.error {
+  color: red;
+  font-weight: 600;
+}
+.loading {
+  display: flex;
+  align-items: center;
+}
+.diamond {
+  width: 30px;
+  height: 30px;
+  padding-left: 5px;
+}

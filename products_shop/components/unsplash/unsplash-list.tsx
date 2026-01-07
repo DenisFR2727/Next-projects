@@ -44,12 +44,11 @@ export default function UnsplashList() {
                 src={photo.urls.full}
                 width={photo.width}
                 height={photo.height}
-                alt={photo.alt_description}
+                alt={photo.alt_description || "foto"}
                 style={{ backgroundSize: "cover" }}
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "/fallback.jpg";
                 }}
-                priority
               />
               <div
                 className={isMobile ? "layout_hover-image-mobile" : "overlay"}

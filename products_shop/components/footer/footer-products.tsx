@@ -18,7 +18,7 @@ const Footer = () => {
                   alt="logo funny shop"
                   width={30}
                   height={30}
-                  priority
+                  loading="lazy"
                 />
               </Link>
             </li>
@@ -54,7 +54,7 @@ const Footer = () => {
                     style={{ maxWidth: "30px" }}
                     width={30}
                     height={30}
-                    priority
+                    loading="lazy"
                   />
                 </Link>
               </li>
@@ -66,7 +66,7 @@ const Footer = () => {
                     style={{ maxWidth: "30px" }}
                     width={30}
                     height={30}
-                    priority
+                    loading="lazy"
                   />
                 </Link>
               </li>
@@ -78,7 +78,7 @@ const Footer = () => {
                     style={{ maxWidth: "30px" }}
                     width={30}
                     height={30}
-                    priority
+                    loading="lazy"
                   />
                 </Link>
               </li>
@@ -90,7 +90,7 @@ const Footer = () => {
                     style={{ maxWidth: "30px" }}
                     width={30}
                     height={30}
-                    priority
+                    loading="lazy"
                   />
                 </Link>
               </li>
@@ -102,7 +102,7 @@ const Footer = () => {
                     style={{ maxWidth: "30px" }}
                     width={30}
                     height={30}
-                    priority
+                    loading="lazy"
                   />
                 </Link>
               </li>

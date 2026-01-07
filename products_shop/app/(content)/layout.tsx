@@ -5,6 +5,8 @@ import HeaderMain from "@/components/header/header-main";
 import Footer from "@/components/footer/footer-products";
 
 import "@/styles/globals.css";
+import { ThemeContextProvider } from "@/context/themeContext";
+import TelegramChatWidget from "@/components/products/telegram-chat/telegram-chat-widget";
 
 export const metadata: Metadata = {
   title: "Funny Shop",
@@ -17,18 +19,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body>
+    <section>
+      <ThemeContextProvider>
         <Providers>
           <div id="header">
             <HeaderMain />
           </div>
           <div id="overlay-header"></div>
-          <div id="page">{children}</div>
+          <div id="page">
+            {children}
+            <TelegramChatWidget />
+          </div>
+          <div id="dialog-overlay"></div>
         </Providers>
-        <Footer />
-        <SpeedInsights />
-      </body>
-    </html>
+      </ThemeContextProvider>
+      <Footer />
+      <SpeedInsights />
+    </section>
   );
 }

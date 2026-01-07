@@ -11,6 +11,9 @@
     "deploy": "next build && next export"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.1",
     "@heroui/button": "2.2.23",
     "@heroui/code": "2.2.17",
     "@heroui/input": "2.4.24",
@@ -33,7 +36,7 @@
     "clsx": "2.1.1",
     "framer-motion": "11.18.2",
     "intl-messageformat": "10.7.16",
-    "next": "15.3.1",
+    "next": "15.3.6",
     "next-themes": "0.4.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -43,7 +46,8 @@
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.89.2",
-    "spinners-react": "^1.0.11"
+    "spinners-react": "^1.0.11",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.3.4",

@@ -2,6 +2,10 @@
 header {
   padding-left: 1rem;
   padding-right: 1rem;
+  overflow: hidden;
+}
+.logo_funny-shop {
+  margin-left: 10px;
 }
 .z-40 {
   font-family: "Roboto", sans-serif;
@@ -10,8 +14,6 @@ header {
   display: flex;
   justify-content: center;
   padding: 0 !important;
-  //   padding-left: 1rem !important;
-  //   padding-right: 1rem !important;
   background: #fff;
   width: 100%;
   z-index: 0;
@@ -99,6 +101,9 @@ header {
   .logo_funny-shop {
     display: none;
   }
+  .group {
+    margin-left: 10px;
+  }
 }
 @media (max-width: 475px) {
   .nav-cart-icon {
@@ -133,13 +138,3 @@ header {
 .logo-nav {
   color: #f5a524;
 }
-
-// header.light_theme {
-//   background-color: #fdfdfd;
-//   color: #222;
-// }
-
-// header.dark_theme {
-//   background-color: #181818;
-//   color: #eee;
-// }
